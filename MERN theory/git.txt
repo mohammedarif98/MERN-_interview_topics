@@ -1,0 +1,50 @@
+
+---> What is Git ?
+	Git is a distributed version control system used to track changes in code. It allows multiple developers to work on the same project, manage versions, and collaborate without conflicts.
+
+---> Git vs GitHub ?
+	GitHub is a cloud platform used to host and collaborate on Git repositories.
+
+---> what is Branching ?
+	Branching allows us to work on features independently without affecting the main codebase.
+
+---> what Merge conflict ?
+	A merge conflict occurs when two branches modify the same part of a file.
+	solve: I manually resolve the conflict in the file, then stage and commit the resolved changes.
+
+---> what  is git stash ?
+	git stash temporarily saves my uncommitted changes so I can switch branches without losing work.
+
+---> what is git add ?
+	git add moves changes from the working directory to the staging area.
+
+---> waht is git status ?
+	Shows the current state of the working directory and staging area.
+
+---> waht is git push ? 
+	git push sends local commits to the remote repository (like GitHub).
+
+---> what is git merge ?
+	Combines changes from one branch into another.
+	example: You’re in main branch and Merge feature/login into main.
+
+---> what is git pull ? 
+	It fetches changes from a remote repository and merges them into your current local branch.
+
+---> waht is git log ?
+	Displays commit history. its includes Commit ID, Author, Date, Message.
+
+---> waht is git commit?
+	git commit saves a snapshot of the staged changes in the local repository.
+
+---> what is git revert ?
+	Revert creates a new commit that undoes the changes of a previous commit, without rewriting history
+
+---> what is git reset?
+	Moves the branch pointer and optionally modifies staging/working directory.
+
+---> what is git rebase? 
+	Rebase is used to move my branch on top of another branch, creating a clean linear history.
+
+---> waht is cherry picking? 
+	Cherry-pick means taking a specific commit from one branch and applying it to another branch.

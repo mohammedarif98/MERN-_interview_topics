@@ -1,0 +1,65 @@
+
+
+-------------------------------------------------- HTML ---------------------------------------------------------
+
+---> What is HTML?
+	HTML (HyperText Markup Language) is used to structure content on the web using elements and tags.
+
+---> What is the difference between HTML and HTML5?
+	HTML5 is the latest version with semantic tags, multimedia support, and APIs, while older HTML relied more on <div> and external plugins.
+
+---> what is metatag and doctype?
+	Meta tags provide metadata like encoding, viewport, and SEO info for the browser and search engines.
+	Doctype tells the browser to use HTML5 standards instead of quirks mode, its Prevents quirks mode (broken/old rendering behavior).
+
+---> what is html entities ?
+	HTML entities are used to display reserved or special characters in HTML using encoded representations like &lt;, &gt; and &amp;.
+
+---> what is Void Elements? 
+	Void elements are HTML elements that don’t require closing tags and cannot contain any content, such as <img>, <br>,<hr> and <input>.
+
+---> what is <img> vs <figure> vs alt ?
+	image tag are used to displays an image and alt are attribute of image tag, Provides alternative text for the image. when Image fails to load.
+	<figure> is a semantic container used to group images with captions using <figcaption>. Used to group media + caption, Improves semantic meaning. its include <figcaption> for description
+
+---> HTML Formatting Tags (text styling)
+	Formatting tags are used to change the appearance or meaning of text in HTML.eg: <em>, <strong>, <b>
+
+---> What are semantic elements?
+	Semantic Tags in HTML: Semantic tags are HTML elements that clearly describe the meaning and role of the content they contain.
+	Tags that describe meaning, like <header>, <footer>, <article>, <section>.
+
+---> What are block vs inline elements?
+	Block: takes full width (<div>, <p>)
+	Inline: takes only needed width (<span>, <a>)
+
+---> What is the difference between <link> and <a>?
+	<link> connects external resources (CSS), <a> creates hyperlinks.
+
+---> What is iframe?
+	Embeds another webpage inside a page.
+
+---> What is id and class ?
+	id is a unique identifier for a single element. and class is used to group multiple elements.
+
+
+-------------------------------------------------- CSS ---------------------------------------------------------
+
+---> css positioning propert?
+	The position property defines how an element is positioned in the document and how top, right, bottom, and left work.
+	static(default) : Static elements are positioned according to normal flow and cannot be moved using top or left.
+	relative        : Relative positioning moves an element from its original position without affecting surrounding layout.
+	absolute        : Absolute elements are removed from flow and positioned relative to the nearest non-static parent.
+	fixed           : Fixed elements stay in the same position on the screen even when the page scrolls.
+	sticky          : Sticky elements behave like relative until a scroll thres hold, then stick like fixed.
+
+---> What is box-sizing?
+	box-sizing is a CSS property that defines how element dimensions are calculated. In content-box, width excludes padding and border,
+	while in border-box, width includes both, making layouts easier to manage.
+
+---> flexbox and grid ?
+	Flexbox is a one-dimensional layout system used for aligning items in a row or column.
+	Grid is a two-dimensional layout system used for creating complex layouts with rows and columns.
+
+---> what is CSS specificity?
+	CSS specificity determines which style is applied based on selector priority: inline > id > class > element.

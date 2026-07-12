@@ -1,0 +1,499 @@
+
+
+1) What is React?
+
+	React.js is a JavaScript library used to build fast and interactive user interfaces, especially for single-page applications. It follows a component-based architecture,
+	uses a Virtual DOM for efficient updates, and supports one-way data binding, which makes applications predictable and easier to debug.
+	
+	Features of React.js: component based archeiteceture, use vertual dom for imporved performance, unidirectional data flow its simplfy the data flow, use jsx, reusable component.
+
+	Advantage: Component-Based Architecture, Virtual DOM for Better Performance, One-Way Data Binding 
+	Disadvantage: Not a Full Framework, Boilerplate for Large Apps, Rapid Ecosystem Changes.
+
+	--> A Single Page Application (SPA) is a web application that loads a single HTML page and dynamically updates the content as the user interacts with the app, without reloading the
+	    entire page.
+
+2) what is jsx?
+
+	JSX is a syntax extension for JavaScript that allows writing HTML-like code inside JavaScript. It gets compiled by Babel into React.createElement() calls, making it easier to build UI components
+
+	how JSX diffrent from HTML:
+		JSX is compiled into JavaScript before execution, whereas HTML is rendered directly by the browser. JSX allows us to write UI logic along with JavaScript,
+		while HTML is only a markup language.
+
+2.5)What is Rendering in React?
+
+	Rendering in React is the process of converting components into UI and updating the DOM when state or props change.
+	
+3) what is different between react and angular?
+
+	React.js is library focues on building user interfaces, where Angular is fully fleged framework for build complete appliction.
+	React.js uses virtual dom for effecient rendedring, where Angular uses  2-way data binging .
+	React.js follows a component-based architecture, whereas Angular is based on modules, components, and directives.
+
+3.5) What is CSR (Client-Side Rendering)?
+
+	CSR means the browser (client) downloads a minimal HTML file and then renders the UI using JavaScript. The rendering happens on the client side after downloading the JS bundle.
+
+3.6) What is SSR (Server-Side Rendering)?
+
+	SSR means the server generates the complete HTML page for each request and sends it to the browser. Rendering happens on the server.
+	
+3.9) waht is SSG(Static Site Generation)? 
+
+	SSG (Static Site Generation) is a technique where HTML pages are generated at build time, not on every request. The server returns pre-built static files, making pages
+	load very fast.
+
+4) What are Components?
+
+	Components are the building blocks of a React application. They are reusable, independent pieces of UI that accept props as input and return JSX
+	Functional components are commonly used with hooks, while class components are older and uses on lifecycle methods.
+
+5) what is Fucntional Components?
+
+	A functional component is the modern way to define components in a React application. It is a JavaScript function that accepts props and returns JSX. 
+	Functional components are simpler, easier to read, and use React Hooks to manage state and lifecycle features (Side effects by useEffect hook).
+
+	In functional components, the useEffect hook is used to handle lifecycle features. Empty dependency array [] acts as componentDidMount, a value in the array acts as componentDidUpdate,
+	and the return function acts as componentWillUnmount
+
+	React component lifecycle has three phase:
+		Mounting (Component Created): component is created and added to the DOM.
+		Updating (State or Props Change): when compoenent is re-render due to state or props change.
+		Unmounting (Component Removed): when the component is removed from the DOM, Managed using cleanup function
+
+6) waht is Class Component?
+
+	A class component is older way of defining components in React. It is created using an ES6 class that extends React.Component, Class components can manage state and handle lifecycle
+	methods. They use lifecycle methods such as componentDidMount, componentDidUpdate, and componentWillUnmount to control behavior during different phases of a component’s lifecycle.
+
+7) what is LifeCyle method?
+
+	Lifecycle methods control a component’s behavior during mounting, updating, and unmounting, handling side effects such as data fetching and cleanup.
+
+	ComponentDidMount: its only run one time after the first render.
+	ComponentDidUpdate: its runs after state/props change.
+	ComponentWillUnmount: Runs just before the component is removed from the DOM.(cleanup).
+	
+	React component lifecycle has three phases — mounting, updating, and unmounting. In class components these are handled by componentDidMount, componentDidUpdate,
+	and componentWillUnmount. In functional components, all three are handled by the useEffect hook.
+
+8) What are Vertual DOM?
+
+	Virtual DOM is a lightweight JavaScript representation of the real DOM that React uses to efficiently update only the changed parts of the UI.
+
+8.5) What is Real DOM? 
+
+	The Real DOM is the actual DOM in the browser that represents the User Interface, and updates to it can be slow because they involve layout recalculations and repainting.
+
+9) what is props?
+
+	Props are read-only data passed from a parent component to a child component in React, used to make components reusable and dynamic.
+
+10) what is state?
+
+	State is a mutable data store inside a React component that controls dynamic behavior and re-renders the UI when updated.
+
+11) what is difference between props and state? 
+
+	State stores and manages data inside a component, while props are used to pass read-only data from parent to child.
+
+12) waht is hooks? 
+
+	hookss are special function in functional component that allow to use state and life cycle features 
+
+	useState(): useState Hook is used to manage state in functional components and re-render the UI when the state changes.
+
+	useReducer(): useReducer Hook used to manage complex state logic using reducer function. 
+
+			reduecet function receives the current state and an action object. Inside the reducer function, have switch statement to handle different actions like
+			increment, decrement, add 10, and reset. When a button is clicked, the dispatch sent action to the reducer. Based on the action type, the reducer returns
+			a new updated state, and React automatically re-renders the UI with the updated count value
+
+	useEffect(): useEffect Hook are used to handle side effects in functional components, such as API calls, subscriptions, timers, and DOM updates. It can handle lifecycle feature 
+		     in functional components.
+		    --> Dependency array behavior: [] is runs once(componentDidMount), [state/props]→runs when dependencies change(componentDidUpdate), No array→runs after every render
+
+	useContext(): useContext is a React Hook that allows components to access shared data from a Context without passing props manually through every level.
+
+	useRef(): useRef is a React Hook used to store mutable values or access DOM elements without component re-renders.
+
+	useMemo(): useMemo hook are used to memoize a calculated value so it doesn’t recalculated on every render only realculated when its dependencies change.
+
+	useCallback(): useCallback is a React Hook that memoizes a function and returns the same function reference unless its dependencies change.
+
+	useSelector(): useSelector is a React-Redux hook used to read data from the Redux store and subscribe the component to store updates. its Selects required state from the Redux store,
+		       Component re-renders only when selected state changes
+
+	useDispatch(): useDispatch is a React-Redux hook used to dispatch actions to the Redux store to update the state. its Sends actions to reducers, Triggers state updates.
+
+	useParams(): useParams is a React Router hook used to access dynamic parameters from the URL. Reads dynamic route values, Commonly used for fetching data by ID, Returns params as strings
+
+	React.memo(): React.memo is a higher-order component that memoizes functional components and prevents re-rendering when props have not changed, improving performance by avoiding
+		      unnecessary renders.
+
+
+13) What is Conditional Rendering?
+
+	Conditional rendering in React means displaying different UI elements or components based on certain conditions, such as state or props.
+		Example: if/else, Ternary operator (condition ? A : B), Logical AND (condition && A) is called short-circuit rendering uses && to render a component only when a condition is true. 	
+
+14) how the data Flow of react.js? 
+
+	React follows a one-way (unidirectional) data flow, where data flows from parent components to child components through props. child componet cannot directly modify the parent data.
+	they use callback(onClick, onChange) to modify data .This makes the application predictable, easier to debug, and maintain.
+
+14.5) what is State Lifting in React?
+
+	State lifting is the process of moving state from a child component to the closest common parent so that multiple components can share and access the same state.
+
+15) why browser cant read jsx?
+
+	Browsers cannot understand JSX because it is a syntax extension of JavaScript used in React. Therefore, JSX is transpiled into plain JavaScript using Babel.
+	Then tools like Webpack or Vite bundle the application and optimize it so it can run in the browser.
+
+16) what is Render() | Return()?
+
+	render() is a lifecycle method in React class components that returns JSX describing UI. It is automatically called by React when state or props change.
+	return is a JavaScript keyword used inside a component (function or class) to return JSX that defines what should be rendered.
+
+17) what is controlled and uncontrolled Components?
+
+	Controlled Components: Controlled components are form elements where the input value is managed by React state. This means React has full control over the data, making it easy
+			       to validate and update the UI.
+	UnControlled Components: Uncontrolled components store their data in the DOM itself, and we access the value using refs like useRef, without depending on React state.
+
+18) what is statless and stateFull component? 
+
+	Stateless Component: stateless component does not manage its own state. It receives data through props and simply renders UI based on that data.
+	Stateful Component: stateful component manages its own state using useState(), useReducer() and can update the UI when the state changes.
+
+19) what is props drilling?
+
+	Props drilling is the process of passing data from a parent component to deeply nested child components through intermediate components that don’t need the data,
+	just to reach a deeply nested child.
+
+	Why Its Problem: Makes code harder to read, Creates tight coupling, Difficult to maintain and scale. changing props force to re-render in middle components.
+	How to Avoid Props Drilling: Context API, State management libraries (Redux, Zustand).
+
+20) what is react portal? 
+
+	A Portal lets you render a child component outside its parent DOM node — but it still behaves like a normal React child.
+	React Portal renders a component into a different DOM node outside the parent hierarchy, while keeping it part of the React component tree. used for modals, tooltips, and dropdowns
+
+21)
+	
+22) what is lazy loading?
+
+	Lazy loading is a technique where components or resources are loaded only when they are needed, instead of loading everything at once.
+	its Improves initial load time, Reduces bundle size, Enhances performance, Implemented using React.lazy() and Suspense
+
+	Component-Level Lazy Loading: Component-level lazy loading loads a component only when it is rendered, using React.lazy and Suspense.
+	Route-Level Lazy Loading(Code Splitting): Route-level lazy loading loads page components only when a specific route is accessed, reducing the initial bundle size.
+	Image Lazy Loading: Image lazy loading loads images only when they enter the viewport, improving page load performance and reducing bandwidth usage.
+	Route-Level Code Splitting: Route-level code splitting splits the application bundle by routes, so only the required code for the current route is downloaded, improving performance.
+
+22.5) What is Suspense in React? 
+
+	Suspense in React is used to handle loading states for lazy-loaded components or data. It allow to display a fallback UI (like a loader or spinner) until the
+	component is ready.
+
+23) what is code spiliting?
+
+	Code Splitting is a technique used to split your JavaScript bundle into smaller chunks so they can be load only when need, improving performance.
+
+23.5) what is Routing?
+
+	Routing:             Routing is the process of navigating between different pages or views in a react application based on the URL.without reload the entire page
+	Client-Side Routing: Client-side routing means navigation happens inside the browser without a full page reload. Only the required components are rendered,
+	React Router:        React Router is a library used in React applications to implement client-side routing, allowing navigation between components based on the URL.
+	Dynamic Routing:     Dynamic routing allows routes to accept dynamic parameters, such as IDs, enabling pages to be rendered based on URL values
+
+	Why Routing Is Important?
+		Routing enables a single-page application to behave like a multi-page application by managing navigation through URLs, improving usability and SEO while avoiding
+		full page reloads.
+
+24) waht is memoization?
+
+	Memoization is an optimization technique that stores the result of expensive calculations or function calls and reuses them when the same inputs occur again,
+	instead of recalculating them.
+
+25) what is redux?
+
+	Redux is a predictable state management library for JavaScript applications used to manage application state in a centralized store.
+
+	Core Concepts (principle) of Redux: 
+		--> Store → Holds the entire application state in a single centralized object.
+		--> Action → Plain js object that describes what happened
+		--> Reducer → Reducer is a pure function that takes the current state and an action, and returns a new state without mutating the original state
+		--> Dispatch → Dispatch is a function that triggers a state change, it sends an action to the store, which forwards it to the reducer.
+
+	How Redux Works: In Redux component dispatches an action describing what happened. The action is sent to the Redux store, which forwards it to the reducer.
+	The reducer returns a new state based on the action type. The store updates its state, and connected components receive the updated state and re-render if needed.
+
+	Middleware: middleware in Redux is a function that sits between dispatching an action and the reducer, allowing you to intercept, modify, delay, or handle side effects before
+		    the action reaches the reducer.
+
+	Common Use Cases: Handling async actions (API calls), Logging actions, Error handling, Analytics, Authentication logic.
+	Common Redux Middleware: redux-thunk, redux-saga, redux-logger 
+
+26) how react application works?
+
+	When a React application starts, the browser loads index.html, which contains a root element (e.g., <div id="root"></div>). Then the entry file (main.jsx) executes and renders
+	the root component (App) into the DOM using ReactDOM.createRoot().render(). React builds a Virtual DOM from the component tree. When state or props change, React creates a new
+	Virtual DOM, compares it with the previous one using a diffing algorithm, and updates only the changed parts in the real DOM through reconciliation, ensuring efficient UI updates.
+
+
+=======================================================================================================================================
+
+27) what is Virtualization in react?
+ 
+	Virtualization is a performance optimization technique used when rendering large lists or tables. Instead of rendering all items at once, React renders only the items that are
+	currently visible on the screen.
+
+28) What is Fragment in React?
+
+	A Fragment in React is used to group multiple elements without adding an extra DOM node.
+
+29) What is key in React?
+
+	A key in React is a special attribute used to uniquely identify elements in a list. It helps React efficiently update, add, or remove items when the list changes.
+	Why key in React?
+		React uses key to identify which item changed in a list during re-rendering.
+		Without key, React re-renders the entire list. With key, it only updates the changed item → better performance.
+		Never use index as key if list order can change.
+	 
+30) what is pure component in react?
+
+	Pure Components are components that re-render only when their props or state actually change. They improve performance by avoiding unnecessary re-renders.
+	shallow comparison checks only the first level of values in an object or array. It compares references, not deeply nested data
+
+	Shallow Comparison: Shallow comparison checks whether props or state have changed by comparing their references at the first level. It does not check nested values.
+
+31) What are Refs in React?
+
+	Refs is special attribute in React are used to directly access and manipulate DOM elements or React components without causing a re-render. They are mainly used when you need to
+ 	interact with DOM Manually. Common use cases: Focusing an input field, Accessing DOM values (height, width, scroll)
+
+32) What is forwardRef in React?
+
+	forwardRef allows parent components to access child DOM elements directly. By default, refs do not pass through components.forwardRef enables this behavior.
+
+33) what is Error Boundaries?
+
+	Error Boundaries are React components that catch JavaScript errors in their child component tree and prevent the entire app from crashing. Instead of breaking the whole UI, 
+	they show a fallback UI.
+
+34) What is HOC (Higher-Order Component) in React? 
+
+	A Higher-Order Component (HOC) is a function that takes a component as input and returns a new component with enhanced features. It is used to reuse component logic without modifying
+	the original component. 
+
+35) What is Context in React? 
+
+	Context is a React used to share data globally without prop drilling, and useContext is a Hook used to access that shared data.
+
+	Common use cases: User authentication data, Theme (dark/light), Language or locale, App-wide settings
+	How it works: Create a context (createContext), Provide data using a Provider, Consume data using useContext
+
+36) what is Strict Mode in React?
+
+	StrictMode is a development-only tool in React that helps identify potential problems and unsafe practices in an application. It does not affect production builds.
+
+	---> Why useEffect runs twice in Strict Mode?
+		In React Strict Mode, useEffect runs twice in development to help detect side-effect related bugs. React intentionally mounts, unmounts, and re-mounts components to ensure effects
+		are properly cleaned up and are safe to run multiple times. This behavior occurs only in development and does not happen in production.
+
+37) How to Optimize a React App?
+
+	Optimizing a React app mainly means reducing unnecessary re-renders, improving load time, and handling large data efficiently.
+
+	--> Prevent unnecessary re-renders by Use React.memo for functional components, Use useCallback for functions, Use useMemo for expensive calculations.
+	--> Code splitting & lazy loading its help Load components only when needed.
+	--> Optimize lists by Use keys properly, Use virtualization for large lists(react-window)
+	--> Optimize images & assets by use Lazy load images, Use compressed images, Use CDN.
+
+
+38) when would we avid using context api and prefer another state managemnt library? 
+	
+	We should avoid using Context API when the application has complex global state, frequent state updates, or performance issues caused by unnecessary re-renders. In such cases,
+	state management libraries like Redux, Zustand, or MobX are preferred because they provide better scalability, selective state subscriptions, and improved performance.
+
+34) Why prefer Redux/Zustand over Context API in some cases?
+	
+	The main reason is performance and scalability. With Context API, when the context value changes, all components consuming that context re-render, even if they only use a small 
+	part of the state.
+
+	--> Context API can trigger re-renders in all consuming components when its value changes.
+	--> Redux/Zustand allow components to subscribe to only the state they need.
+	--> They provide middleware, devtools, persistence, and better organization for large applications.
+
+39) what are the difference of Context API vs Redux ?
+
+	Context API and Redux are both used for sharing state in React, but they serve different purposes. Context API solves prop drilling for simple state sharing, whereas Redux is used for
+	scalable and predictable state management in complex applications
+
+	Context API: Context API is used to share global data like theme or authentication without prop drilling. It is built into React and works best for small to medium applications with
+		     simple state.
+
+	Redux: redux is a state management library used for large and complex applications. It uses a one-way data flow with actions and reducers, supports async operations through middleware,
+	       and provides tools like Redux DevTools, which make state changes predictable and easy to debug.
+
+40) what is protected route in React?
+
+	protected route restricts unauthorized users from accessing certain pages by checking authentication/authorization before rendering the component.
+	protected routes are used for Secure sensitive pages (dashboard, profile, admin pages), Prevent unauthorized access, Implement RBAC
+
+	I implement protected routes using React Router and a reusable ProtectedRoute component. Authentication state is managed using Redux Toolkit. After login, the backend returns a JWT token,
+	which is attached to API requests using Axios interceptors. Protected routes verify whether the user is authenticated before rendering pages. On the backend, every protected API validates
+	the JWT token using authentication middleware. If the token expires or becomes invalid, the user is redirected to the login page.
+
+
+	I implement protected routes in React using React Router. I create a reusable ProtectedRoute component that checks whether the user is authenticated or not.
+	If the user is logged in, the requested page is rendered; otherwise, the user is redirected to the login page. Authentication state is usually managed using
+	Redux or Context API, and the JWT token is sent with API requests. On the backend, protected APIs also verify the token for security.
+
+
+41) what are different Types of Export and Import?
+
+	Default Export: Used when a file exports only one main value.  export default function App(){};
+	Named Export: Used when exporting multiple values from a file. export const add = () => {};
+	Mixed Export (Default + Named): A file can have one default and multiple named exports.
+	Rename Import / Export (Alias): Used to avoid name conflicts. import { sum } from "./math";
+	Import Everything: Import all named exports as an object. import * as utils from "./utils";
+	
+42) what is Server-Side Components | Client-Side Components?
+
+	Server Components: Server Components run on the server and send ready-to-use HTML to the browser. Executed on the server,Smaller JavaScript bundle sent to client, Better performance and SEO,
+			   Cannot use hooks like useState, useEffect.
+
+	Client Components: Client Components run in the browser and handle interactivity. Executed in the browser, Can use hooks (useState, useEffect, useRef)
+
+43) what is Hydration?
+
+	Hydration is the process where React takes server-rendered HTML and attaches JavaScript event handlers on the client to make the page interactive.
+
+44) difference between Redux vs Redux Toolkit(RTK)?
+
+	Redux is a predictable state management library used to manage global application state in a single store.
+	In classic Redux, we manually write action types, action creators, reducers, and store configuration.
+
+	Redux Toolkit is the official, modern way to write Redux that reduces boilerplate, simplifies state management, and follows best practices by default.
+
+45) RTK Query and React Query(TanStack Query) and fetch and axios ?
+
+	Fetch and Axios are used to make HTTP requests to APIs. 
+	React Query and RTK Query are used to handle data-fetching and manage server state, including caching, loading, and error handling, making data fetching more efficient and easier to maintain.
+	React Query is used to manage server state like caching, synchronization, and background refetching. It uses fetch or Axios internally to make API calls.
+
+46) How to Handle Forms in a React Application?
+
+	There are three common ways to handle forms in React, Forms in React are handled using controlled components with state or form libraries like React Hook Form or Formik for better performance,
+	validation, and scalability.
+
+	Controlled Components: Form inputs are controlled using useState, input values are stored in React state and updated using onChange handlers
+	Form Libraries: Form libraries like React Hook Form or Formik simplify form handling, validation, and improve performance.
+	Validation Handling: Client-side validation using libraries like Yup / Zod, Show real-time or submit-time errors
+
+47)
+
+48) What is server state | client state ?
+
+	Server state: Server state is data that comes from the backend through API calls, like users, products, or posts, and can change independently of the UI. Managed by api handling
+		      libraries.
+	Client state: Client state is data managed inside the application and controlled by user interactions, such as form inputs, UI toggles, or modal states. It is typically stored
+		      using useState, useReducer, or Redux.
+
+49) why use redux for state management instead of other librrary and context api? 
+
+	Using Redux instead of the Context API or other libraries is mainly about scalability, predictability, and maintainability in larger applications.
+	Redux is preferred over Context API for large applications because it provides a predictable, centralized, and scalable state management system with powerful debugging and middleware support.
+
+	Middleware in Redux is used to handle side effects like API calls by intercepting actions before they reach the reducer
+	Middleware in Redux is a function that sits between dispatching an action and the reducer, allowing you to run extra logic.
+	Middleware intercepts actions before they reach the reducer.
+	Real-world middleware: 
+		redux-thunk → handle async functions, redux-saga → complex async flows
+
+50) useParams, useNavigate, useLocation ?
+
+	useParams reads URL params like get URL values "/user/10 → { id: 10 }" , useNavigate changes routes navigate programmatically, and useLocation can access current URL info
+	pathname, state, query
+
+
+51} why direct mutating objects is dangerous?
+
+	Directly updating state is dangerous in React because it keeps the same reference. React works by detecting reference changes to detect updates, it may skip re-rendering, leading to
+	stale UI and hard-to-debug bugs.
+
+	-----> const [user, setUser] = useState({ name: "Arif", age: 25 });     // ❌ Directly mutating state
+	       user.name = "Rahul";
+	       setUser(user);
+
+	-----> setUser(prev => ({...prev, name: "Rahul"}));                  // Correct Way (Immutable Update)
+
+52)  waht is Render Props in React?
+	
+	Render props is a pattern where a component receives a function as a prop and uses it to decide what to render, enabling logic reuse across components.
+
+53) event.preventDefault() | stopPropagation()?
+
+	event.preventDefault():  prevents the browser’s default behavior for an event, such as page reload on form submission, allowing JavaScript or React to handle the action.
+	event.stopPropagation(): is used to stop an event from bubbling up the DOM tree to parent elements. It ensures that only the event handler on the target element is executed
+				 and prevents parent handlers from being triggered.
+
+54) what is Batch Updates in React?
+	
+	Batch updates in React mean that React groups multiple state updates together and performs a single re-render, instead of re-rendering after each update.
+
+55) Why key should NOT be index in React? 
+
+	key is used to uniquely identify elements in a list so React can efficiently update the UI., Index should not be used as a key because when list items change order, 
+	React may reuse incorrect DOM elements, causing UI bugs and state issues.
+
+
+56) why use RTK Query and TanStack Query?
+
+	RTK Query and TanStack Query are used to simplify server-state management by handling data fetching, caching, and synchronization automatically instead of manually using useEffect
+
+57) How Prevent unnecessary API calls in useEffect?
+
+	Unnecessary API calls in useEffect are prevented by correct dependency arrays, memoization (useMemo, useCallback), conditional execution, request cancellation, debouncing,
+	and caching strategies.
+
+58) Component re-renders even when props don’t change, How do you fix unnecessary re-renders? 
+
+	Because React compares references, not values.
+	Common causes: Parent re-renders, New object / array / function references, Context updates, Inline functions
+	Use: React.memo for component, useCallback for functions, useMemo for expensive calculations
+	Unnecessary re-renders are fixed by memoizing components with React.memo, stabilizing props using useCallback and useMemo, avoiding new object references,
+
+59) Same API is called in multiple components, How will you avoid repeated API calls?
+
+	Problem: Slower app, Unnecessary backend load
+	Solution: To avoid repeated API calls, we centralize data fetching using Context or global state, or use caching solutions like React Query/RTK Query that automatically deduplicate
+		  and cache requests.
+
+60) How to Preventing child components from re-rendering when the parent re-renders?  
+
+	Wrap Child component with React.memo to avoid re-rendering of child. Child re-renders only if props change
+	To prevent child re-rendering on parent updates, we wrap the child with React.memo and ensure props are stable using useMemo and useCallback, while keeping state as local as possible.
+	
+61) which causes memeory leaks? useEffect , useMemeo, useCallback, pure functoin?
+
+	useEffect CAN cause memory leaks Because useEffect is used for side effects: API calls, Subscriptions, Timers (setInterval, setTimeout), Event listeners
+	If you don’t clean them up, they keep running even after the component unmounts.
+	Memory leaks in React are usually caused by unmanaged side effects in useEffect, such as timers, subscriptions, or async operations without proper cleanup.
+
+62) which hook run before pain ? useEffect or useEffectLayout?
+
+	--> useEffect runs after the browser paints the UI and is used for side effects such as API calls and subscriptions. 
+	--> useLayoutEffect runs synchronously after DOM updates but before the browser paint,
+
+63) State Batching and Async setState?
+
+	State batching means React groups multiple state updates into a single re-render
+	Because both updates use the same old value, React batches them → result is +1 only.
+	
+	React state updates are asynchronous, so state isn’t updated immediately after calling setState
+	setState (or setX) does NOT update state immediately.State updates happen after the function finishes This enables batching and performance optimization

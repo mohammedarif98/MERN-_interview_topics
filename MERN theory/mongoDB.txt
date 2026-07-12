@@ -1,0 +1,288 @@
+
+1) What is a Database?
+
+	A database is an organized collection of data that allows storing, retrieving, updating, and deleting information efficiently. Databases help applications manage data securely and efficiently.
+
+2) What is DBMS?
+	
+	DBMS is software used to store, manage, and retrieve data efficiently. It provides features like data security, consistency, and easy querying. Examples include MySQL and MongoDB.
+	Types of DBMS : Relational DBMS (RDBMS), NoSQL DBMS
+
+3) What is a Relational Database (RDBMS)?
+
+	RDBMS (Relational Database Management System) is a type of DBMS where data is stored in tables (rows and columns), and relationships between tables are maintained using primary keys
+	and foreign keys.
+
+4) What is a NoSQL Database?
+
+	A NoSQL database is a non-relational database designed to store unstructured data. It does not have fixed schemas and supports flexible data models like documents and
+	key-value pairs. NoSQL databases are optimized for horizontal scalability, high performance, and handling large volumes of distributed data.
+
+5) What is a Schema?
+
+	A schema is the structure of a database. It defines how data is organized such as tables, fields, data types, relationships, constraints, and indexes.
+
+6) What is SQL?
+	
+	SQL (Structured Query Language) is a standard language used to communicate with relational databases. It is used to create, read, update, and delete data stored in tables.
+	SQL is mainly used with MySQL, PostgreSQL, Oracle
+
+7) What is MySQL?
+
+	MySQL is an open-source Relational Database Management System (RDBMS) that uses SQL to store, retrieve, and manage data in tables with rows and columns.
+	It follows ACID properties, supports indexes, joins, constraints, and is widely used in web applications.
+
+8) what is mongoDB? 
+
+	MongoDB is a NoSQL, document-oriented database that stores data in JSON-like documents (BSON) instead of tables and rows.
+	It supports a flexible schema, making it ideal for applications where data structure changes frequently.
+
+9) What is a Collection in MongoDB?
+	
+	A collection is a group of documents in MongoDB. It is similar to a table in a relational database, but it does not enforce a fixed schema.
+	Documents within a collection can have different structures and fields.
+
+10) What is a Document in MongoDB?
+
+	A document is a single record of MongoDB collection. It is stored in JSON-like format (BSON) and consists of key–value pairs.
+	Each document can have different fields, making it flexible and schema-less.
+
+11) Advantages of MongoDB?
+
+	Flexible Schema, Stores Data as JSON-like Documents, High Performance, Horizontal Scalability
+
+12) Disadvantages of MongoDB?
+
+	No Joins (Limited Relational Capability), Higher Memory Usage, Data Redundancy (Storing the same data multiple times in different places.), Weaker ACID transactional behavior
+
+13) Data Types in MongoDB?
+
+	MongoDB supports BSON data types like String, Number, Boolean, Array, Nested Object, ObjectId, Date, Null, Binary, and Regex.
+
+14) what is Sharding?
+
+	Sharding is method of horizontal scaling by splitting large datasets across multiple servers (shards). It improves performance and stores more data than a single machine can handle.
+
+15) what is  Capped Collection?
+
+	A capped collection is a fixed-size MongoDB collection that automatically overwrites the oldest documents when it becomes full. It is used for logs, real-time data, and high-speed inserts. 
+
+16) what is GridFS? 
+
+	GridFS is used to store and retrieve large files (over 16MB) in MongoDB by splitting them into smaller chunks. Useful for images, videos, and documents. when we retrive file gridfs automatically 
+	combine chunks and give complete file.
+
+17) what is Transactions?
+
+	transactions allow multiple operations to run as a single atomic unit.Either all operations succeed or all fail, ensuring data consistency.
+
+18) what is trigger? 
+
+	A trigger is a set of actions or instructions that are automatically executed when a specific event occurs in the database. eg: INSERT, UPDATE, DELETE
+
+19) what is Cluster?
+
+	A group of database servers working together to handle more load, provide high availability,keeping them server smoootly. its help data always availble
+
+===========================================================================================================
+
+20) what is Replica Set? 
+
+	A replica set is a group of MongoDB servers that maintain copies of the same data for high availability. One is primary server handle(read+writes), others are secondary (copy the data).
+
+===========================================================================================================
+
+21) what is Journaling?
+
+	Journaling is MongoDB’s mechanism for recording operations in a journal file to protect data and enable fast recovery after a crash.
+
+22) what is Horizontal Scaling?
+
+	Horizontal scaling means procccess of adding more servers or mechine to distributed system to handle increase workload. MongoDB achieves this through sharding.
+	MongoDB supports both vertical and horizontal scaling, but it is primarily designed for horizontal scaling using sharding, Read Replicas, Partitioning.
+
+23) what is vertical Scaling?
+
+	vertical scalling means increase the capacity or resourse (CPU, RAM, storage) of single server or mechine to handle a greater workload
+	MySQL supports both vertical and horizontal scaling, but it is primarily optimized for vertical scaling.
+
+24) what is ACID Theorem?
+
+	ACID defines rules that ensure reliable and safe database transactions. ACID properties ensure that database transactions are atomic, consistent, isolated, and durable.
+
+	A – Atomicity : A transaction either completes fully or fails completely.If any part of the transaction fails, the entire transaction is rolled back.
+	C – Consistency : After every transaction, the database must move from one valid state to another valid state, Making sure data stays correct and follows all rules.
+	I – Isolation : Multiple transactions can run at the same time without affecting each other. One transaction cannot see another’s partial data.
+	D – Durability : Once a transaction is successfully committed, it is permanently saved. Data remains safe even after a crash or power failure.
+
+25) what is Cursor?
+
+	A cursor is a pointer returned by MongoDB queries that allows you to iterate through the result set.
+
+26) what is Shell?
+
+	MongoDB Shell (mongosh) is a command-line tool used to interact with the database, run queries, and manage operations.
+
+27) what is Data Modeling?
+
+	Data modeling in MongoDB means designing how data is stored—choosing embedding or referencing based on application needs.
+	
+28) what is TTL (Time-To-Live Index)?
+
+	A TTL index automatically deletes documents after a specified time. Used for session data, logs, temporary records.
+
+29) what is Covered Query?
+
+	A covered query is a query where all required fields are found inside an index, no need to scan documents. This makes it extremely fast.
+
+30) what is Backup (mongodump) | Restore (mongorestore)
+
+	1 --> process of creating copy of DB or specific data within the DB to protect againt data loss or correption
+	2 --> process of recovering data from  backup and returning to its orgnal state.
+
+31) what is Indexing?
+
+	Indexing is used to improve query performance by database to quikly locate specific data in collection, instead of scanning the entire database.
+
+32) type of indexing
+	
+	Single Field Index, Compound Index, Multikey Index (for arrays), Text Index, Hashed Index, Geospatial Index 
+
+33) waht is CAP theorm? 
+
+	CAP Theorem says a distributed system can provide only two of Consistency, Availability, and Partition Tolerance at the same time
+	   C – Consistency = All users see the same, up-to-date data at the same time.
+	   A – Availability = Every request gets a response, even if some servers are down.
+	   P – Partition Tolerance = The system continues to work even if the network fails between servers.
+
+34) waht is Aggregation?
+
+	Aggregation is a MongoDB framework used for processing and transforming documents through multiple stages such as filtering, grouping, sorting, and joining
+
+35) what is Aggregation Pipeline?
+
+	An aggregation pipeline is a sequence of stages where each stage processes documents and passes the output to the next stage.
+
+		$match – filter documents
+		$group – group and calculate
+		$project – select/reshape fields
+		$sort – sort results
+		$limit – limit output
+		$sum, $avg, $min, $max – calculations
+	   
+36) what is Types of Operators (MongoDB)? 
+
+	comparison Operators = $eq, $gt, $lt, $in, $ne
+	Logical Operators = $and, $or, $not, $nor
+	Update Operators = $set, $unset, $push, $pull, $inc
+	Array Operators = $size, $elemMatch, $all
+	Aggregation Operators = $sum, $avg, $min, $max, $count
+
+23) What is $lookup?
+	
+	$lookup is used to join documents from another collection, similar to SQL JOIN.
+
+22) what is  Referencing ?
+
+	Referencing means storing the ID of another document/table row to create relationships.
+
+	const blogSchema = new mongoose.Schema({ title: String, author: { type: mongoose.Schema.Types.ObjectId, ref: "User" }});
+	
+37) What are Aggregate Functions?
+	
+	MAX(): Returns the largest value in a column  ----> SELECT MAX(salary) FROM employees;
+	MIN(): Returns the smallest value in a column ----> SELECT MIN(age) FROM users;
+	COUNT(): Returns the number of rows           ----> SELECT COUNT(*) FROM orders;
+	SUM(): Returns the total of a numeric column, Total revenue from all orders ----> SELECT SUM(amount) FROM orders; -----> SELECT SUM(amount) FROM orders WHERE status = 'completed';
+	AVG(): Returns the average (mean) value of a numeric column ----> SELECT AVG(salary) FROM employees; -----> SELECT AVG(rating) FROM reviews WHERE productId = 5;
+
+45) What is Populate in Mongoose?
+
+	populate() is used to fetch referenced documents in mongodDB.
+
+36) What is Mongoose?
+
+	Mongoose is an ODM (Object Data Modeling) library for MongoDB and Node.js., It provides a structured way to interact with MongoDB by defining schemas and models
+	Mongoose is an ODM (Object Data Modeling) library for MongoDB and Node.js. It allows us to define schemas, validate data, create models, use middleware,
+	and manage relationships between collections. It makes working with MongoDB easier and helps maintain consistent data structures in applications..
+
+234) What is Schema Validation in Mongoose?
+
+	Schema Validation in Mongoose is the process of enforcing rules on the data before it is saved to MongoDB. It ensures that only valid data is stored in the database.
+
+24) Why Use Mongoose?
+
+	MongoDB is schema-less, meaning you can store any structure: This flexibility can lead to inconsistent data.
+	
+	Mongoose helps by: Schema Validation,
+			   Creates Models and the model provides methods like: User.create(), User.find(), User.findById(), User.updateOne(), User.deleteOne();.
+			   Data Validation its Mongoose checks data before storing it,
+			   Relationships (Population),
+			   Easier Querying,
+			   Middleware (Hooks).
+
+42) Serialization  and De-Serialization ?  
+
+	Serialization is the process of converting application data (objects/JSON) into a format MongoDB can store, which is BSON.
+	Deserialization is the process of converting stored BSON data back into application-readable objects.
+
+
+----------------------------------------------
+
+40) What is Normalization? 
+	
+	Normalization is the process of organizing database into multiple tables to reduce redundancy and improve consistency. 
+
+41) What is Denormalization ? 
+
+	Denormalization is combining data into fewer tables to improve read performance, even though it may introduce redundancy..
+
+38) what is constraint ?
+
+	A constraint is a rule applied to a database column to ensure data accuracy and integrity. eg: Primary Key, Foreign Key, NOT NULL, UNIQUE, CHECK
+
+	PRIMARY KEY is automatically created when a new row is inserted. It uniquely identifies each row in a table and does not allow duplicate or NULL values
+	FOREIGN KEY is used to create a relationship between two tables. It ensures that the value in one table must exist in the referenced table, maintaining referential integrity.
+		-----> userId INT, FOREIGN KEY (userId) REFERENCES users(id)
+	UNIQUE constraint ensures that all values in a column are different. It allows NULL values, but no duplicate values. -----> email VARCHAR(100) UNIQUE
+	NOT NULL constraint ensures that a column cannot contain NULL values. A value must be provided when inserting data. -----> name VARCHAR(50) NOT NULL
+	CHECK constraint is used to limit the values that can be stored in a column by applying a condition. ----> age INT CHECK (age >= 18)
+
+39) database relationships ?
+
+	Relationships define how data in one table/collection is connected to another.
+
+ 	One-to-One (1:1) : One record in Table A is linked to one record in Table B. Example: User ↔ UserProfile
+	One-to-Many (1:N) : One record in Table A can be linked to multiple records in Table B. Example: User → Orders, Author → Blogs
+	Many-to-One (N:1) : Many records in Table A are linked to one record in Table B. Example: Many Orders → One User, Many Employees → One Department
+	Many-to-Many (M:N) : Many records in Table A are linked to many records in Table B. Example: Students ↔ Courses, Users ↔ Roles
+
+
+43) mongoDB server and native driver ?
+
+	MongoDB Server is the actual database system that stores and manages data, 
+	MongoDB native driver is a client library used by applications to connect to the server and perform operations like CRUD.
+
+44) What is JOIN?
+	
+	JOIN combines rows from multiple tables using related columns.
+
+46) What is an ORM?
+
+	ORM stands for Object Relational Mapping. Examples: Prisma, Sequelize, TypeORM, Mongoose
+	ORM allows developers to interact with databases using programming language objects instead of raw queries.
+
+48) Difference Between MySQL and PostgreSQL?
+
+	Both are relational databases, but PostgreSQL provides more advanced features, better SQL compliance, stronger ACID support, and better complex query handling. MySQL is simpler,
+	easier for beginners, and performs well for basic web applications.
+
+49) Which One Would You Choose for MERN?
+
+	In MERN applications, MongoDB is commonly preferred because it works naturally with JavaScript objects and provides flexible schema design, which speeds up developmen.
+	For applications with highly relational data, strong consistency, and complex queries, I would choose PostgreSQL. For simpler CRUD-based applications with straightforward
+	relational requirements, MySQL is also a good option because of its simplicity and performance.
+
+
+
+

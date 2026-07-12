@@ -1,0 +1,266 @@
+
+1) how we can handle errors in express application? 
+
+	use error handling with try–catch inside async functions.
+	Centralized Error Handling Middleware, Express recognizes an error middleware by 4 parameters:(err, req, res, next) 
+	Custom Error Class
+	404 Route Not Found Handling
+
+2) how we can connect mogodb with node.js and also mysql?
+
+	MONGODDB: Node.js cannot communicate with MongoDB directly. It requires an ODM library such as Mongoose. Mongoose is used to connect Node.js with MongoDB and provides built-in
+		  methods like connect(). The connect() method is used to establish a connection with the MongoDB database. Inside this method, we pass the MongoDB connection string,
+		  which can be either an Atlas connection string or a local database URL. For security reasons, the connection string should not be written directly in the source code.
+		  Instead, it should be stored in an environment variable inside a .env file. This environment variable is then accessed and passed into the connect() method, allowing
+		  Node.js to securely connect to the database.
+	
+	MYSQL: Node.js cannot connect to MySQL directly, so it uses a database client library like mysql2. This library helps Node.js communicate with MySQL and run SQL queries.
+	       To connect to MySQL, the application needs details such as the host, username, password, and database name. For security reasons, these details are not written directly
+	       in the code. Instead, they are stored in a .env file as environment variables. When the application starts, Node.js creates a connection pool that keeps database connections ready.
+	       These connections are reused for requests instead of opening new ones, which improves performance. Any connection or query errors are handled centrally to prevent crashes.
+
+3) how to connect different collection with relation of users? 
+	
+	MongoDB is a document database, so it does not support joins like SQL. Instead, it uses references between collections and resolves them at query time. This is done using ObjectId
+	references and populate in Mongoose with MongoDB.
+
+	In MongoDB relationships are handled using referenced ObjectIds. Mongoose uses the populate method to fetch related documents from multiple collections and combine them into a
+	single response.
+
+	In MySQL, relationships are defined using foreign keys, and related data is fetched using JOIN queries, which allow multiple tables to be combined in a single query.
+ 
+4) how to perform search, pagination, and filter in a single API call?
+
+	In a single API call, search, filter, and pagination are handled using query parameters. The backend reads these parameters, builds a dynamic database query, and returns only the
+	required subset of data.
+	
+	GET /products?search=iphone&category=mobile&minPrice=500&page=2&limit=10
+
+	Search, filter, and pagination are implemented in a single API by using query parameters, constructing a dynamic database query, and applying skip and limit to return only the required
+	filtered and paginated data
+
+5) How does Social Authentication (Facebook) work in an Express.js application?
+
+	Create a Facebook app in the Facebook Developer Console by selecting Consumer as the app type, then add the Facebook Login product and choose Web. Set the Valid OAuth Redirect URI 
+	which must match the callback URL in your Express app. After that, copy the App ID and App Secret from the app settings and store them safely in a .env file. These credentials are
+	used in the Express backend to authenticate users through Facebook using OAuth.
+
+6) explain working of patment gateway razorpay?
+
+	Razorpay integration, we typically use three APIs: one to create an order, one to handle payment via Razorpay Checkout, and one to verify the payment signature and confirm the transaction
+	1--> The first API is called when the user clicks Pay Now; the frontend sends a request to the backend, and the backend creates a Razorpay order with the required amount and currency,
+	     then receives an order_id from Razorpay and sends it back to the frontend.
+	2--> The second step is the Razorpay Checkout UI (not a backend API), where the frontend opens the checkout using the order_id and the user completes the payment using card, UPI,
+	     or net banking (test credentials in test mode)
+	3--> The third API is called after a successful payment, where the frontend sends the payment_id, order_id, and signature to the backend, and the backend verifies the payment signature
+	     using the Key Secret. If the verification is valid, the payment is marked as successful in the database; otherwise, it is marked as failed.
+
+7) How does the server know the user’s internet was disconnected during payment?
+
+	This scenario is handled using the ACID property—Atomicity, which ensures that a payment transaction either completes fully or is rolled back, even if the user’s internet disconnects
+
+	When a user’s internet disconnects during a payment, the server relies on the ACID properties of transactions, mainly Atomicity. Atomicity means a transaction is treated as a single
+	unit—it either completes fully or does not happen at all. So, even if the client disconnects, the payment will not be left in a half-completed state. The backend marks the order as
+	PENDING and later confirms the final state (SUCCESS or FAILED) using payment verification or webhooks from the payment gateway. This ensures data consistency and prevents duplicate
+	or partial payments.
+
+8) How do we secure a Node.js application?
+
+	1 --> sensitive data like database credentials, API keys, and secrets are stored in environment variables instead of hardcoding them.
+	2 --> Authentication is handled using JWT or sessions, and passwords are always hashed and salted (never stored as plain text).
+	3 --> To protect APIs, we use authorization middleware, role-based access control (RBAC), and HTTPS for encrypted communication. Security headers are added using libraries like helmet,
+	      and rate limiting is applied to prevent brute-force attacks.
+	4 --> Input validation and sanitization are used to avoid SQL/NoSQL injection and XSS attacks.
+	5 --> proper error handling, logging, and regular dependency updates help prevent information leakage and known vulnerabilities.
+
+9) How do we handle multiple users using a single model?
+
+	We handle multiple users using a single model by adding a role field and controlling access through role-based authorization middleware.
+
+10) How do we implement email in a Node.js application?
+
+	Email functionality in a Node.js application is commonly implemented using Nodemailer. First, we configure an email transporter using SMTP credentials stored securely in environment variables
+	When an event occurs (such as signup, password reset, or OTP verification), the backend creates an email template and sends the email using Nodemaile
+	An SMTP transporter is a configuration object used in Node.js (usually with Nodemailer) that defines how and where emails are sent.
+
+11) How do we implement media file upload in a Node.js application?
+
+	Multer is a Node.js middleware used to handle multipart/form-data, which is required for file uploads. When a client uploads a file, the request first passes through Multer before
+	reaching the controller. Multer parses the incoming request, extracts the file data, validates it (size/type if configured), and temporarily stores the file either in memory or on disk.
+	After this, Multer attaches the processed file information to the request object (for example, req.file or req.files). The controller then uses this file—either saving it locally,
+	uploading it to cloud storage like Cloudinary/S3, and storing the file URL or path in the database. Finally, the server sends a success response to the client.
+
+12) How do we encrypt (hash) passwords in a Node.js application?
+
+	passwords are never encrypted and stored; instead, they are hashed using a one-way algorithm like bcrypt. When a user registers, the plain password is combined with a salt (random value)
+	and passed to bcrypt, which generates a hashed password. This hash is stored in the database. During login, the entered password is hashed again using the same algorithm, and bcrypt compares
+	it with the stored hash. Because hashing is irreversible, even if the database is compromised, the original passwords cannot be recovered.
+
+13) Forgot Password Function Flow (Node.js / Express)?
+
+	The forgot password flow starts when a user submits their registered email address. The backend verifies whether the user exists and then generates a secure, time-limited token or OTP.
+	This token is saved in the database with an expiry time and sent to the user via email. When the user clicks the reset link or submits the OTP with a new password, the backend validates
+	the token and checks its expiry. If valid, the backend hashes the new password using bcrypt, updates it in the database, and removes the reset token to prevent reuse. Finally, the user is
+	notified that the password has been reset successfully.
+
+14) How do we optimize search queries?
+
+	Search queries are optimized by using proper indexing on frequently searched fields. Instead of creating multiple unnecessary indexes, we often use single-field indexing on key search fields
+	such as email, username, or title. A single index allows the database to quickly locate matching records without scanning the entire collection or table.
+
+15) How do we optimize a Node.js application?
+
+	Application level 
+	1 --> Use asynchronous operation efficiently, Write non-blocking code and avoid blocking the event loop by using async/await and callbacks properly.
+	2 --> Optimize database queries, Use proper indexing and pagination, and reduce payload size by fetching and sending only the required fields.
+	3 --> implement caching (Redis), Use caching solutions like Redis to avoid repeated database calls for frequently accessed data.
+	4) --> Enable response compression, Enable Gzip compression to reduce response payload size and improve network performance.
+	5) --> handle error efficintly, Use centralized error handling and proper HTTP status codes to prevent crashes and improve application stability.
+	
+	Infrastructure level,
+	1 --> Scale and monitor app,  Scale the application using clustering or PM2, enable load balancing, and monitor performance using logging, profiling, and monitoring tools.
+
+16) how to manage garbage collection in node.js?
+
+	Garbage collection (GC) in Node.js is handled automatically by the V8 engine, but as developers we can manage and optimize it indirectly by writing memory-efficient code and
+	monitoring memory usage
+
+17) How do implement authenication in node.js?
+
+	import jwt from "jsonwebtoken"
+	const token = jwt.sign({user: "admin"}, "secretkey", {expersIn: "1h"})	
+	console.log(token)
+
+18) How to securing and optimizing APIs in an Express.js application?
+
+	1 --> use jwt Authentication, role-based authorization for access control, Protect routes using middleware and Apply RBAC 
+	2 --> proper Input Validation & Sanitization,Validate request body and Prevent NoSQL injection & XSS
+	3 --> Secure HTTP Headers (Helmet) Protects against common attacks like: XSS, Clickjacking, 
+	4 --> Rate Limiting (Prevent Abuse & DDoS) Limit repeated API calls from the same IP.
+	5 --> Password Security, Always hash passwords
+
+	use JWT for authentication, role-based authorization for access control, input validation to prevent malicious data, Helmet for secure headers, rate limiting to prevent brute-force attacks,
+	and bcrypt to hash passwords.
+
+19) How do you prevent unauthorized access to routes?
+
+	I use authentication middleware to verify JWT tokens and authorization middleware to check user roles. For example, admin-only routes are protected using role-based checks,
+	ensuring users can only access permitted resources.
+
+20) What is RBAC and why is it important?
+
+	RBAC (Role-Based Access Control) restricts access based on user roles like user or admin. It improves security by ensuring users only access what they are allowed to and makes
+	the system easier to scale when new roles are added.
+
+21) If user clicks Pay Now multiple times, how do you handle it?
+
+	--> On the frontend, the Pay Now button is disabled immediately after the first click.This prevents accidental multiple submissions from the UI and improves user experience
+	--> On the backend, I use an idempotency key for payment-related APIs. If the same request is received multiple times with the same idempotency key, the backend returns the same
+	    response instead of creating a new order or payment.
+	--> State-Based Order Control
+	--> Locking Mechanism, To handle concurrent requests arriving at the same time, I apply locking mechanisms at the database level.
+		--> Pessimistic Locking: In high-risk scenarios like inventory or payments, the order row can be locked during payment processing so that no other transaction
+		    can modify it until the current transaction completes.
+		--> Optimistic Locking: If two requests try to update the same order, the second update fails due to a version mismatch and is safely rejected.
+	--> ACID Properties in Payment Handling, Payment processing strictly follows ACID properties espetially atomicty
+		--> Atomicity: The payment update is all-or-nothing. Either the payment is fully completed or fully rolled back.
+		--> Consistency: Order state transitions are valid and predictable (e.g., CREATED → PAID, never CREATED → SHIPPED directly).
+		--> Isolation: Concurrent payment requests do not interfere with each other due to locking and transaction isolation.
+		--> Durability: Once the payment is marked as successful, the data is permanently stored and survives crashes.
+
+22) How to handle or Design an API That Handles 1 Million Requests/Second?
+
+	Stateless API Design: APIs should be stateless, meaning the server does not store client session data. Each request contains all the information required to process it
+			      Use JWT tokens instead of server-side sessions, Allows requests to be handled by any server.
+	Load Balancer: A load balancer sits between the client and backend servers and distributes incoming requests across multiple servers. its Prevents a single server from being overloaded,
+		       Improves performance and availability.
+	API Gateway: An API Gateway acts as a single entry point to backend services and protects them from abuse. Rate limiting, Authentication, Request validation used for Protect backend
+		     services from abuse and overload.
+	Horizontal Scaling: Horizontal scaling means adding more servers instead of increasing the power of a single server. 
+	Aggressive Caching: To reduce database load, frequently accessed data is served from cache. 90%+ requests served from cache, DB load drastically reduced. its reduces DB loads and
+			    Improves response time
+	Database Scaling: Databases are scaled separately to handle high read and write volumes. Read replicas, Sharding (user-based, region-based), Indexing
+	Idempotency & Rate Limiting: Idempotency ensures that repeated requests produce the same result, which is critical for payments and order creation. Prevent duplicate requests,
+		 		     Control abusive clients
+
+23) Millions of users are trying to log in at once. How do you ensure the app doesn’t crash?
+
+	To handle millions of concurrent logins, I design the authentication system to be stateless using JWT, fronted by a load balancer. The login service scales horizontally,
+	uses Redis caching to reduce database load, and applies rate limiting to prevent abuse. Databases are optimized with indexing and replicas, and non-critical tasks are
+	processed asynchronously. This ensures the system remains stable even during peak login traffic.
+
+
+24) If your API is slow, how will you fix it??
+
+	The API can be slow due to multiple reasons. Identify Where the Slowness API response time, Database query time, Network latency, just Avoid blind optimization
+	Check Database Performance: slow APIs are caused by slow database queries Add proper indexes, Avoid full table scans, Select only required fields, Add pagination instead of large payloads
+				    Database optimization gives the biggest improvement
+	Add Caching: If the same data is requested frequently, I introduce caching. Cache read-heavy endpoints, Use Redis or in-memory cache. its give requests served from cache, Drastically
+		     reduced DB load, Faster response time
+	Check Blocking Code: CPU-heavy or synchronous code can block the event loop. Convert to async
+	Optimize API Logic & Payload: Sometimes APIs are slow due to inefficient logic. Avoid sending large JSON responses, ompress responses (gzip), Avoid over-fetching data
+	Scale Horizontally: If the API is slow due to high traffic, I scale the system. use a load balancer and statless api design
+	Continuous Monitoring: After optimization, I continuously monitor the API.
+
+25) What happens when you type a URL in the browser?
+
+	When a user types a URL, the browser parses it to identify the protocol, domain, and path. It then resolves the domain to an IP address using DNS, establishes a TCP connection,
+	and performs a TLS handshake if HTTPS is used. The browser sends an HTTP request, receives the response from the server, and renders the webpage.
+
+	DNS (Domain Name System): DNS converts a domain name (example.com) into an IP address so the browser knows where the server is located.
+	IP (Internet Protocol): IP is responsible for identifying devices and routing data across networks using IP addresses.
+	TCP (Transmission Control Protocol): TCP establishes a reliable connection between client and server and ensures data is delivered correctly and in order.
+	TLS (Transport Layer Security): TLS encrypts the communication between browser and server to keep data secure and private (used in HTTPS).
+
+26) API taking more than 5 seconds — how to handle in frontend?
+
+	--> Show a loading state: Display a spinner or skeleton UI to inform users that data is loading and prevent confusion or repeated clicks.
+	--> Set a request timeout: Cancel or fail the request if it exceeds a predefined time limit.
+	--> Handle slow or failed responses gracefully: Show a user-friendly message such as “This is taking longer than usual. Please try again.”
+	--> Use caching and background loading: Cache previous responses using tools like React Query or SWR, show cached data instantly, and update it in the background.
+	--> Pagination or lazy loading: Avoid loading all data at once; fetch data incrementally on scroll or page change.
+	--> Disable UI actions during requests: Disable buttons or actions while the API call is in progress to prevent duplicate requests.
+
+27) How does a booking application ensure that two users don’t book the same seat at the same time?
+
+	--> Seat status is stored in the database Each seat has a status such as AVAILABLE, HOLD, or BOOKED.
+	--> When a user selects a seat, a temporary lock is applied The seat is moved to HOLD status, so other users cannot book the same seat at the same time.
+	--> Database-level locking using atomic update queries An atomic operation ensures that only one request can update the seat status. If multiple users try simultaneously,
+	    only one succeeds and the others fail.
+	--> This prevents race conditions Because the update is atomic and isolated, double booking is not possible.
+
+28) what is api gateway and why use it in microservice?
+
+	API Gateway acts as a centralized entry point that handles authentication, authorization, routing, rate limiting, and hides internal microservices from direct exposure. This simplifies
+	clients and improves security and scalability.
+	--> Without Gateway: Every service must verify JWT, Duplicate code
+	--> With Gateway: JWT verified once, Clean services, Faster requests
+	--> Gateway acts like a firewall: Rate limiting, Block malicious requests, Validate tokens, Hide internal services
+
+28.5) how idempotency works in payments ?
+
+	Idempotency means: Performing the same operation multiple times results in the same outcome as performing it once.
+
+	in payment systems, network failures are common. A client may send a payment request, and the server may process it successfully, but the response can get lost due to poor network
+	connectivity.
+
+	In this case, the client assumes the payment failed and retries the request.
+
+	With idempotency, each payment request includes a unique idempotency key. If the same request is received again with the same key, the server checks its records, sees that the payment
+	has already been processed, and returns the previous result instead of charging the user again. This prevents double charges.
+
+	Without idempotency, the server treats the retry as a new request and processes the payment again, resulting in the user being charged twice.
+
+29) why use kafka and api gateway?
+
+	API Gateway handles synchronous client requests and cross-cutting concerns like authentication and routing. Kafka is used for asynchronous event-driven communication between microservices.
+	They address different layers and are often used together. 
+
+30) waht is kafka? 
+
+	Kafka is used for asynchronous event-driven communication between microservices, Kafka is a message broker that lets services talk to each other without waiting.
+
+31) i want to make nwtwork req but it take longer than 5 sec i want to cancle it adn show a timout eror how cani achive this? 
+	
+	Use AbortController to cancel long-running network requests. Attach its signal to the request and abort it after a timeout using setTimeout, then handle the abort error to show a
+	timeout message.

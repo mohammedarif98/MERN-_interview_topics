@@ -1,0 +1,460 @@
+
+1) What is JavaScript?
+
+	JavaScript is a single threaded, interpreted programming language used to make interactive web pages. It runs in both browser side and server side using Node.js.
+
+2) What is the difference between var, let, and const?
+
+	var   → var is function-scoped, allows redeclaration and reassignment,and var is hoisted and initialized with undefined
+	let   → Variables declared with let are hoisted but not initialized because of the Temporal Dead Zone, block-scoped and cannot be redeclared
+	const → Variables declared with const are hoisted but not initialized because of the Temporal Dead Zone, block-scoped and cannot be reassigned
+	
+	Hoisted but not initialized (TDZ) means JavaScript already knows the variable exists (it is in memory), but it has no value yet. Accessing it before assigning a value throws
+	a ReferenceError
+
+? ) console.log({}+{}) ---> [Object Object] ?
+
+	[object Object] is JavaScript’s default string representation of a plain object. object → internal data type,
+
+3) What is Hoisting?
+
+
+	Hoisting is JavaScript’s default behavior of moving variable and function declarations to the top of their scope during compilation.
+	variable declare with var is hoisted with default value is undefined and Function declaratfions are fully hoisted.
+
+11) what is event loop ?
+
+	event loop allow js to perform non-blocking oprations. The Event Loop continuously checks the Call Stack. If the Call Stack is empty, it first executes all tasks in the Microtask Queue.
+	Once the Microtask Queue is empty, it takes one task from the Macrotask Queue and pushes it to the Call Stack for execution. This process repeats continuously, allowing JavaScript to
+	handle asynchronous operations .
+
+4) What is a Closure?
+
+	clouser is function when functoin remember the varible is from lexical scope .after the outer function finsh exicution. A closure is when an inner function can accesses variables
+	from its outer function’s lexcal scope even after the outer function has returned.
+	stale closure: A stale closure happens when a function captures an old value of a variable and keeps using it, even after the value has changed.
+
+5) What is the difference between == and === ?
+
+	== → checks value after type coercion
+	=== → checks value and type without coercion (strict equality)
+
+6) What is the difference between null and undefined?
+
+	undefined → variable declared but not assigned value
+	null null means an intentionally assigned empty value
+
+7) What is this keyword?
+
+	this is keyword that refers to the object that is currently executing the function. Its value depends on how the function is called.
+
+8) What is Temporal Dead Zone (TDZ)?
+
+	Temporal Dead Zone is the phase where a let or const variable is hoisted but not initialized, so During this period accessing them before declaration throws a ReferenceError.
+
+8.5) what is exicution context? 
+
+	Execution Context is the environment where JavaScript code is executed. It contains information about variables, functions, and the current scope.
+	Types of Execution Context: 
+		--> Global Execution Context, Created when the JS file starts, Only one exists
+		--> Function Execution Context,  Every function call creates a new Execution Context, managed by the Call Stack.
+	Phases of Execution Context: 
+		--> creation phase: Memory is allocated, Variables → undefined, Functions → stored completely
+		--> Execution Phase: Code runs line by line, Variables get actual values, Functions are executed	
+
+9) What is DOM?
+
+	DOM stands for Document Object Model. The DOM is a tree-like representation of a web page and DOM methods allow to read, modify, and interact with HTML elements.
+
+10) what is Data Types? 
+
+	A data type defines what kind of value a variable can hold and determines what type of operations can be performed on that value.
+
+	Different Data types: 
+		Primitive data type (stored by value, immutable):  number ,string, boolean, null, undefined, bigint.
+		Non-Primitive data type (all are stored by reference): array, object, functons.
+
+11) what is object | array ?
+
+	Object is non-primitive data type of js. they store data in key-value pair, where values can be properties or methods.
+	An array is a non-primitive data type in JavaScript. It is a collection of elements stored in sequential order, and each element has its own index.
+
+12) what is varible?
+
+	A variable is a named storage location used to store data, and allows easy access the data using the variable name. 
+
+13) what is identifier?
+	
+	An identifier is the name given to a variable, function, or any other user-defined item. It is used to uniquely identify them, and reserved keywords cannot be used as identifiers.
+
+14) what is Type Casting | Type Coercion?
+
+	Type casting is the explicit (manually) conversion of one data type to another, done manually by the developer. Example: Number("10")
+	Type coercion is the implicit (automatic) conversion of data types by JavaScript during operations. Example: 10+"10"=20 
+
+15) waht is operators ? 
+
+	Operators are symbols used to perform operations on variables and values.
+	Type of oprators: 
+		Arithmetic Operators: +,-,*,/,%,**
+		Assignment operators: =,+=,-=,*=,/=
+		comparison operators: ==,===,!=,!==,>,<,>=,<=
+		logical operators: &&,||,!
+		betwise operators: &,|,^,~,<<,>>
+		Unary Operators: typeof,delete,++,--
+		Ternary (Conditional) Operator: condition ? value1 : value2
+
+16) what is Switch statement?
+
+	A switch statement is a conditional control structure used to execute different blocks of code based on matching case values.
+
+17) what is for loop | while loop | do While loop ?
+
+	Loops: loop is used to execute a block of code repeatedly until a specified condition becomes false.
+	For Loop: for loop is used when the number of iterations is known in advance. (initialization; condition; increment/decrement).
+	While loop: A while loop runs as long as a condition is true, and the condition is checked before each iteration.
+	Do While: A do-while loop runs the code at least once, because the condition is checked after the loop body executes.
+
+18) what is function | methods? 
+
+	Funtion: function is a reusable block of code that takes input, processes it and returns an output.
+	Method: method is a function defined inside an object and is used to perform actions related to that object.
+
+19) what is parameter| argumnet ?
+
+ 	Parameter: parameter is a variable defined in a function declaration to accept input
+	Argument: argument is the actual value passed to the function when it is called. 
+
+20) what is class? 
+
+	Class: class is a blueprint for creating objects. It defines properties (data) and methods (behavior).
+	Constructor: constructor is a special method that runs automatically when an object is created and is used to initialize properties.
+	This: this refers to the current instance of the class.
+	Object(instance): An object is a real-world instance created from a class using the new keyword.
+	Inheritance: Inheritance allows child class to reuse properties and methods of their parent class using the extends keyword.
+	Super: super() calls the constructor of the parent class.
+	Methods: Methods are functions defined inside a class that describe object behavior.
+	Encapsulation: Encapsulation means bundling data and methods together and controlling access to them.
+	Private Field(#): Private fields use # and can be accessed only inside the class.
+	Static method: A static method belongs to the class itself, not to instances.
+
+21) what is difference between class and function constructor?
+
+	Classes provide a cleaner syntax for object creation and more easily support features like inheritance and private fields.
+	Function constructors are the older prototype-based method.
+
+22) what is keyword?
+
+	A keyword is a reserved word in a programming language that has a special meaning and cannot be used as an identifier (such as a variable or function name).
+	Example: let, const, var, function, class, if, else, return
+
+23) what is THIS keyword?
+
+	this refers to the object that calls the function, and its value is depends on how the function is called.
+	How this works:
+		Inside an object method → this refers to the object
+		Inside a class → this refers to the class instance
+		In a regular function → this depends on how the function is called
+		In an arrow function → this is taken from the surrounding scope(global scope)
+
+24) what is call | apply | bind?
+
+	call, apply, bind are allow a function to be borrowed and executed with a different object context.
+	Call: calls a function immediately and sets this. Arguments are passed one by one
+	Apply: apply works same as call, but arguments are passed as an array.
+	Bind: Returns a new function with this permanently bound. It does not execute immediately
+
+25) what is new?
+
+	The new keyword is used to create a new object instance from a constructor function or a class.
+	--> throw new Error("msg"); Here, new creates an Error object
+
+26) what is prtotype and prototype inhertance?
+
+	Prototype:  prototype is a object that is internally linked with onother object, used to share properties and methods.
+		    
+	Prototypal inheritance: Prototypal inheritance is the mechanism by which one object accesses properties and methods of another object through the prototype link.
+
+	Prototype Chain: When you access a property on an object, JavaScript first checks the object itself. If it's not there, it moves up to its prototype, then that prototype's prototype
+			 and keeps going until it either finds the property or hits null. This chain of linked prototypes is called the prototype chain.
+
+27) what is Synchronous and Asynchronous code?
+
+	Synchronous execution means tasks are executed sequentially, one after another, and it blocks the execution of the next task until the current task completes.
+	Asynchronous execution allows tasks to run independently without blocking the execution of other code
+
+28) what is stact memory | heap memory?
+
+	Stack Memory: Stack memory stores primitive values, function call information, and references to heap data. It is fast and automatically managed.
+		      primitive data is stored directly in stack memory as actual values, not as references.so each variable has its own copy.
+	Heap Memory: heap memory stores non-primitive values like objects, arrays, and functions. It is used for dynamic memory allocation. Data in the heap is accessed through
+	 	     references, which are stored in the stack.
+
+
+ =========================================================================================================================
+
+47) what is currying? 
+
+	Currying is a technique where a function that takes multiple arguments and its transformed into a sequence of functions, each function taking one argument at time.
+
+=========================================================================================================================
+
+29) waht is arrow function? 
+
+	An arrow function is a shorter syntax for writing functions in JavaScript, and it does not have its own this, it inherits this from the surrounding scope.
+
+30) what is Template Literals?
+
+	Template literals is introduce in ES6 and its make string formatting easier and more readable.
+
+31) what is Default Parameters?
+
+	Default parameters allow parameters in function to have defualt values when no argument is passed. If we pass argument then that value will use.
+
+32) what is Destructuring? 
+
+	Destructuring allows unpacking values from arrays or properties from objects into separate variables in a clean and readable way.
+
+33) what is Spread Operator (...)?
+
+	The spread operator (...) is used to expand elements of an array, object, or iterable into individual values, and to copy arrays and objects using the ... syntax before varible name
+
+34) what is Rest parameter?
+
+	The rest parameter allows a function to accept any number of arguments and collect them into an array.
+
+35) what is Modules (import/export) | require()?
+
+	A module is a reusable piece of code that encapsulates variables, functions, or classes and exposes only what is needed.
+
+	require(): require is a CommonJS function used in Node.js to import modules so their exported functionality can be used in another file.
+	Module:  A module is a separate file of code that contains variables, functions, or classes, which can be exported and imported for reuse.
+
+36) what are type of function?
+
+	Function Declaration: A function declared using the function keyword with a name and It is hoisted.
+	Function Expression: A function assigned to a variable. It is not hoisted.
+	Anonymous Function: A function without a name, usually used in function expressions or callbacks.
+	First-Class Function: functions can be stored in variables, passed to other functions, and returned from functions
+ 
+37) what is higher-order function?
+
+	A Higher-Order Function is a function that takes another function as an argument, returns a function.
+	map, filter, reduce, and forEach are higher-order functions because they take callback functions as arguments.
+
+38) what is map() | filter() | reduce() | forEach()?
+
+	Map(): map method are Used to transform each element in an array and return result as a new array.
+	Filter(): filter method takes an array and returns a new array containing only the values that meet a certain condition.  
+	Reduce(): reduce method is used to combine all elements in an array and return a single value.
+	forEach(): forEach is an array method used to iterate over each element and execute a callback function. It does not return a new array
+		   
+39) what is callback | callback Hell?
+
+	Callback: A callback is a function passed as an argument to another function, its executed later usually after a task completes.
+	Callback Hell: Callback hell is a situation where multiple asynchronous operations are nested inside callbacks, making the code hard to read, maintain, and debug.
+
+40) what is scope?
+
+	Scope:--> scope determine the visibility and accessibility of variable, functions and objects in different part of code during run time
+	Global Scope:--> global scope variable declare outside the function or block, it can access from any where in code
+	Function Scope:--> function  scope or local scope variable declare inside the function, it can access only within the  function.
+	Block Scope:--> black scope variable declare with let, const inside block( {} ) and accessible only with in the block they defined in. Like if statement, for loops,
+			any code within curly braces
+	Module Scope:--> module scope variable or function declare inside the module, not accessible outside unless it explicitly exported, each module have its own scope
+	Lexical Scope:--> Lexical scope means that scope is determined by where the code is written — not where it is called from.
+		          Lexical scope means a function's scope is defined by where it's written in the code, not where it's executed.
+
+41) what is optional chaiining? 
+
+	Optional chaining (?.) allows safe access to nested object properties without causing an error if a value is null or undefined.
+
+42) what is Nullish Coalescing (??) | Logical OR (||)
+	
+	Nullish Coalessing: The nullish coalescing operator returns the right-hand value only if the left-hand value is null or undefined.
+			    It is used to provide a fallback only for null or undefined, not for other falsy values like 0, "", or false.
+	Logical OR: The logical OR operator returns the first truthy value, or the last value if all values are falsy. Falsy values are: 0, false, "", null, undefined, and NaN.
+	Logical AND (&&): The logical AND operator evaluates expressions from left to right and returns the first falsy value it encounters. If all values are truthy, it returns the last value.
+
+43) what is shallow copy | deep copy?
+
+	Shallow Copy: A shallow copy copies only the top-level of an object. If the object contains nested objects, only the reference to the nested object is copied
+		      (not the actual nested object). So modifying nested objects affects both copies.
+	Deep Copy: A deep copy copies everything, including all nested objects. Nothing is shared — completely independent object. Changing the nested value in one will NOT affect the other.
+
+44) what is Garbage Collection?
+
+	Garbage collection is the automatic process where JavaScript frees memory by removing objects that are no longer reachable or used.
+
+45) what is Memory Leak?
+
+	A memory leak happens when allocated memory is not deallocated properly. This causes increased memory usage, leading to slow performance or even system crashes
+
+46) what is dynamic typing and static typing in js?
+	
+	Dynamic In dynamic typing, the data type of a variable is determined during program execution based on the value assigned to it.
+	Static Typing: In static typing, the data type of a variable is defined at compile time and cannot change during program execution..
+
+
+ =========================================================================================================================
+
+48) what is object.freezq | object.seal?
+
+	Object.freeze:--> Object.freeze() makes an object completely immutable.Cannot add new properties, Cannot delete existing properties, Cannot modify existing values.
+	Object.seal:--> Object.seal() prevents adding or removing properties, but allows modifying existing values.”
+
+49) what is generator functoin?
+
+	A generator function is a special function that can pause and resume its execution using the yield keyword. Defined using function*, yield pauses execution and returns a value.
+
+50) what is constructor function?
+
+	A constructor function is a regular function used with the new keyword to create and initialize objects. It helps create multiple objects with the same structure and supports
+	prototypal inheritance.
+
+51) what is pure function | iife function?
+
+	Pure Function: A pure function always returns the same output for the same input and does not cause any side effects.
+	IIFE Function: An IIFE is a function that runs immediately after it is defined. its Avoids global scope pollution, Creates a private scope.
+
+52) what  is error Handling?
+
+	Error handling is the process of catching and managing runtime errors to prevent application crashes, show meaningful error messages, and maintain a smooth user experience
+
+53) what is pass by value | pass by reference?
+
+	Pass By Value:--> The variable a passes its value to the function as an argument, and changing it inside the function does not affect the original variable outside the function.
+	Pass by Reference:-->  the function receives a reference to the original object, so changes made inside the function affect the original object.
+
+54) what is promises?
+
+	A Promise is an object that represents the eventual completion or failure of an asynchronous operation. It is used to handle asynchronous code, avoid callback hell, and make
+	the code cleaner and more readable.
+
+	--> resolve() is used to mark a Promise as fulfilled and pass the result to the next .then().
+	--> reject() is used to mark a Promise as failed and pass the error to .catch().
+	--> then() .then() is used to handle the successful result of a resolved Promise.
+	--> catch() is used to handle errors from rejected Promises or failures in .then().
+	--> finally() executes code after a Promise settles, whether resolved or rejected.
+
+	Promise have 3 states: Pending – initial state, Fulfilled – operation completed successfully, Rejected – operation failed
+
+	Different Promiese Methods:
+		Promise.all() → is takes multple proise as array and Waits for all Promises to resolve. If even one Promise rejects, the entire Promise rejects.
+		Promise.any() → Returns the first fulfilled promise. If all Promises reject, it throws an AggregateError.
+		Promise.race() → Returns with the first promise that fininsh, whether it resolves or rejects.. 
+		Promise.allSettled() → Waits for all Promises to complete and returns their results, regardless of success or failure.
+
+	Promise chaining:-->  Promise chaining is the process of linking multiple .then() calls so that the result of one asynchronous operation is passed to the next.
+
+55) what is async await?
+
+	async and await are used to write asynchronous code in a synchronous-looking way, making it easier to read and handle errors.
+	async makes a function return a Promise, await pauses execution until the Promise resolves, Errors are handled using try...catch
+
+56) what is set | map | WeakSet | WeakMap?
+
+	Set: A Set is a collection of unique values, duplicates are not allowed.
+	Map: A Map stores data as key–value pairs, where keys can be of any data type and uniq.
+	WeakSet: A WeakSet stores only objects, and the references are weak its means objects can be garbage-collected if no other references exist.
+	WeakMap: A WeakMap stores key–value pairs where keys must be objects, and those keys are weakly referenced.
+
+57) what is event loop?
+
+	The event loop is a mechanism that continuously checks whether the call stack is empty. When it is empty, the event loop first executes all tasks from the microtask queue,
+	and then takes a task from the macrotask (callback) queue and pushes it onto the call stack.
+
+	The callback queue stores asynchronous tasks like timers and browser events. The microtask queue stores high-priority tasks that run before the callback queue.
+
+57.5) what is callback Queue?
+
+	The Callback Queue (Macrotask Queue) stores callbacks from asynchronous operations like setTimeout, setInterval, and DOM event. When the Call Stack becomes empty, 
+	the Event Loop moves these callbacks to the Call Stack for execution.
+
+58) waht is call stack? 
+
+	call stack is where js engine use to keep track function call in order thery are exicuted. its follow LIFO last function push into stack first to exicute and poped  
+
+58.5) what is webApi?
+
+	Web APIs are browser-provided features that handle asynchronous operations like timers, HTTP requests, Storage APIs, and DOM events without blocking the main thread.
+
+45) What is fetch() and Axios()?
+
+	fetch() is a built-in brower API used to make HTTP requests. It returns a Promise that resolves to a Response object. It is commonly used to perform GET, POST, PUT, and DELETE requests.
+	Key points: Built into browsers, Does NOT reject on HTTP errors (like 404, 500)
+	
+	Axios is a popular JavaScript library used to make HTTP requests from the browser or Node.js. It is promise-based and provides a simpler API than fetch() for handling requests and responses.
+	Key points: External library (npm install required), Automatically parses JSON, Rejects on HTTP errors (better error handling), Supports interceptors, request cancellation, timeout
+
+	Axios interceptors allow us to modify requests before sending them and handle responses or errors globally before they reach the application code. 
+
+59) what is webpack?
+
+	Webpack is a module bundler for JavaScript applications. It takes multiple files such as JavaScript, CSS, images, and other assets, processes them, and bundles them into optimized
+	files that can be loaded efficiently by the browser.
+
+59) what is shadowing? 
+
+	When a variable is declared inside a certain scope with the same name as a variable in the outer scope, the inner variable takes precedence over the outer variable.
+	This is called variable shadowing
+
+60)  =========================================================================================================================
+
+61) what is local storage | session storage | browser storage ?
+
+	Local Storage:--> Local Storage is a browser storage mechanism that allows you to store data permanently, Local Storage stores data permanently until manually cleared, even after closing
+		          or reopening the browser. its Storage capacity: ~5MB
+	Session Storage:--> Session Storage stores data only for the current tab and is removed automatically when the tab or browser is closed. Key Features: its Storage capacity: ~5MB
+	Browser Storage:--> Browser storage is used to store data on the client side so it can be accessed later without making repeated server requests.
+
+62) what is session | cookie | cache ?
+
+	Cache:--> Cache is a client-side mechanism used as a temporary storage system to store frequently accessed data, so future requests can be served faster without recalculating or
+		  fetching the same data repeatedly. It reduces server load and increases browsing speed.
+	Session:--> A session is sever side mechanism stores user data on the server, The browser only keeps a session ID, usually inside a cookie.
+		    On every request, the browser sends this session ID, and the server uses it to retrieve the user’s data. Since the data is stored server-side, sessions are more secure than
+		    storing data directly in the browser.
+	Cookie:--> A cookie is a small piece of data stored in the user browser, It is automatically sent with every request to the same domain, helping the server identify the user.
+		   Cookies are commonly used to store tokens, preferences, or session IDs.
+		   Cookies are client-side and can have properties like expiry, HttpOnly, Secure, and SameSite.
+
+63) what is json()?
+
+	JSON is a lightweight text format used for storing and transferring data. It looks like a JavaScript object but supports only text-based data types.
+    	We use JSON.stringify() to convert objects into JSON strings and JSON.parse() to convert JSON strings back into objects.”
+
+64) waht is event bubling?
+
+	Event bubbling is a mechanism where an event starts from the target element that triggered it and propagates upward through its parent elements in the DOM tree.
+	If a button inside a div is clicked, the click event first fires on the button, then on the div, and so on up to the document object.
+	Useful for handling events on multiple elements with a single event listener on a parent element.
+
+65) what is event capturing?
+
+	Event capturing is the opposite of bubbling. The event starts from the top of the DOM tree and propagates down to the target element.
+	If a button inside a div is clicked, the click event first fires on the document, then on the div, and finally on the button.
+
+66) what is debouncing?
+
+	Debouncing is a technique where a function is executed only after a certain delay, when the event stops happening.
+	
+67) what is trotling?
+
+	Throttling is a technique where a function is allowed to execute only once in a fixed time interval, even if the event occurs many times.
+
+68) what is event delegation?
+	
+	Event delegation is a JavaScript technique where you attach a single event listener to a parent element instead of adding listeners to many child elements.
+	This is useful when you have many elements with the same event handler or when elements are dynamically added/removed
+
+
+69) explain timer function?
+
+	setTimeout():    setTimeout is used to execute a function once after a specified delay (in milliseconds).
+	setInterval():   setInterval is used to execute a function repeatedly at fixed time intervals.
+	clearInterval(): clearInterval is used to stop a running interval created by setInterval().
+	clearTimeout():  clearTimeout is used to cancel a scheduled timeout created by setTimeout(). It takes the timeout ID returned by setTimeout() and prevents the callback function 
+			 from executing if the timeout has not already fired.
+	setImmediate()(Node.js only): setImmediate executes a function after the current event loop phase, once the I/O operations are completed.
+

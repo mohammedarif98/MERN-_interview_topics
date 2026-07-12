@@ -1,0 +1,88 @@
+
+
+1) What is TypeScript? 
+
+	TypeScript is a strongly typed superset of JavaScript developed by Microsoft. It adds static typing, interfaces, and compile-time error checking to JavaScript
+	and is compiled into plain JavaScript that runs in any browser or runtime.
+
+2) Difference between TypeScript and JavaScript?
+
+	TypseScript: Statically typed, Errors caught at compile time, Supports interfaces and advanced types, it cant directly run in browser and node.js. need  compile to js first.  
+	javaScript: dynamically typed, No interfaces or types, it can directly run in browser and node.js
+
+3) What are the advantages of using TypeScript? 
+	
+	Early error detection at compile time, Better code maintainability for large projects
+
+4) What is tsconfig.json and what is it used for? 
+
+	tsconfig.json is a configuration file that tells the TypeScript compiler how to compile the project. Target JavaScript version
+
+5) What are the different data types in TypeScript?
+
+	Primitive data type: string, number, boolean, null, undefined
+	Special data type: any, unknown, never, void
+	complex data type: array, object, enum, tuple
+	Utility Types: Readonly, omit, partial, required, pick, record
+
+6) What is type inference?
+
+	Type inference is when TypeScript automatically determines the type of a variable based on its value, without explicitly specifying the type.
+
+7) What is type aliasing?
+
+	Type aliasing allows you to create a custom name for a existing type, making complex types easier to reuse and read.
+	type ID = number | string;
+
+8) what is interface?
+
+	An interface defines the structure (shape) of an object, specifying what properties and methods it must have.
+	interface User { name: string; age: number; }
+
+
+9) What is a union type and intersection type?
+
+	Union type (|): Allows a value to be one or multiple types. code --> type Status = "success" | "error"
+	Intersection type (&): Combines multiple types into one. code -->type AdminUser = User & Admin;
+
+10) What is generics? 
+
+	generics functon allow you write resusble type safe fucntion that work with multiple data types without loding type information instead of using any	
+
+11) Difference between type aliasing and interface?
+
+	--> interface is mainly for objects and can be extended or merged. 
+    	--> type aliasing  is more flexible (unions, primitives, etc.).
+
+12) what is Utility Types?
+
+	Utility Types help create new types from existing ones by making properties optional, required, readonly, selecting specific fields, or excluding fields.
+
+	<T> ---> primary type, <k> ---> property key
+
+	Readonly<T> : its makes all properties immutable. its prevent accedental mutation.
+	Partial<T> : Makes all properties optional. like(?)
+	Required<T> : Makes all properties required.
+	Pick<T, K> : creating new type by picks specific properties from a type.
+	Omit<T, K> : creating new type by Removes specific properties from a type.
+	Record<K, T> : Creates an object type with fixed keys and same value type.
+
+13) what is never, unknown, void, any, enum, tuple?
+
+	Never: represent value that never occur. Used for functions that never return, such as functions that always throw an error or run indefinitely. 
+
+	Unknown: A safer alternative to any, It represents a value that can be any type, but you must check its type before using it.. 
+		 let value: unknown = "TS";
+
+	Void: Used for functions that do not return any value.
+
+	Enum: its allow you define set of named constant make code more readle and maintanable. 
+	       enum Role { Admin,User,Guest }
+
+	Tuple: A typed array with a fixed number of elements, where each element has a specific type and order.Unlike arrays, tuples allow mixed types with a fixed length.
+		let user: [number, string] = [1, "Arif"];
+
+	Any: its disable the type checking and allow variable to hold any value of data type. It should be avoided when possible because it removes type safety.
+	     let data: any = 10;
+
+

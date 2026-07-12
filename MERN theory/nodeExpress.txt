@@ -1,0 +1,637 @@
+
+
+1) What is Node.js?
+
+	Node.js is a runtime environment that allows JavaScript to run outside the browser, mainly on the server. It is built on Google Chrome’s V8 engine and is non-blocking and event-driven,
+	which makes it fast and scalable. a runtime environment is where code is executed, and it provides memory, libraries, and system APIs needed during execution.
+
+	Express.js is a lightweight web framework built on top of Node.js. It simplifies building web servers and APIs by providing features like routing, middleware, and request/response handling.
+
+2) Why is Node.js non-blocking?
+
+	Blocking: Blocking in Node.js means an operation stops the execution of other code until it completes, blocking the event loop.
+
+	Non-Blocking: Non-blocking means Node.js does not wait for an operation to finish before moving on to the next task. When tasks like database queries or file reads happen,
+			Node continues executing other code instead of stopping. This prevents the application from freezing or slowing down.
+
+3) What is REPL in Node.js?
+	
+	REPL stands for Read–Eval–Print–Loop.
+	It is a built-in Node.js environment that allows developers to write and execute JavaScript code interactively, line by line, directly in the terminal.
+
+4) What is the Event Loop in Node.js?
+
+	Node.js runs on a single thread, the event loop is the mechanism that allow Node.js to perform non-blocking asynchrnous operation on a single thread.
+
+5) Why is the Event Loop important?
+
+	Event Loop Makes Node.js non-blocking, Allows asynchronous execution, Enables high performance and scalability, Handles callbacks and promises efficiently
+
+6) Explain bcrypt hashing
+
+	bcrypt is used to securely hash passwords. It converts plain text passwords into hashed values using salting and multiple rounds, making passwords difficult to reverse or crack.
+
+7) What is ThreadPool? 
+	
+	thread pool is colection of thread that are created and managed to effeciently exicute the task in parellel or concurently manner. thread pool handle asynchronous
+	operation
+ 
+	Thread: tread is smallest unit of exicution with process. sequence of instruction that can be shecduled and exicute independently.  
+	
+7.5) what is Synchronous and Asynchronous code?
+	
+	Synchronous code executes line by line and blocks execution until the current task completes. 
+	Asynchronous code does not block execution and allows other operations to continue while waiting for tasks like API calls or database operations.	
+
+
+8) What is Event-Driven progamming?
+
+	Event-driven programming is a programming paradigm where the flow of the program is determined by events such as user actions, system messages, or incoming data.
+
+	Event-Driven Architecture is a software architecture pattern where different systems or services communicate with each other through events.
+	When something happens (an event), it is published, and other services react to it asynchronously.	
+
+	Event Queue: managing and exicuting asynchrnous cdoe and event in non blocking manner. queue hold the list of event or task that wait to be processed.
+
+9) What is a Module in Node.js?
+	
+	A module is a reusable piece of code that is written in a separate file and exports specific functionality, which can be imported and used in other parts of an application.
+	It helps in organizing code, improving reusability, and maintaining cleaner project structure.
+
+10) Types of Modules in Node.js
+
+	Core Modules (built-in): these moduls are build into node.js can use directly without any additional installation, Example: fs, http, path, os
+	third-Party Modules : they are created by cummunityand available through npm to developer easly Installed from npm (e.g., express, mongoose)
+	Local Modules : the modules are created by developer with thier own node.js application
+
+10.5) What is Serialization and DeSerialization?
+
+	Serialization means converting an object into a format that can be stored or sent over a network. usually JSON or string.
+	Why needed: To send data from server → client, To store data in DB / file / cache, To send data over HTTP
+
+	Deserialization means converting serialized data back into an object so the program can use it.
+
+	res.json() → serialized JSON
+	req.body → deserialized JSON
+
+11) What is NPM? 
+
+	NPM stands for Node Package Manager. It is the default package manager for Node.js and is used to install, manage, and share reusable JavaScript packages.
+
+12) what is package.json?
+	
+	package.json is the main configuration file of a Node.js project. It stores metadata about the project and lists all dependencies, scripts, and project information.
+	
+13) what is and pakage-lock.json?
+
+	package-lock.json is automatically generated when you install dependencies. It stores the exact versions of every installed package, including sub-dependencies.
+
+14) what is Key Features of Node.js?
+
+	1 --> Asynchronous & Non-Blocking I/O
+		Node.js uses a non-blocking, event-driven architecture.
+		This means operations like database queries run in the background, allowing Node to handle many requests efficiently.
+
+	2 --> Single-Threaded but Highly Scalable
+		Even though Node.js runs on a single thread, it can handle thousands of concurrent requests using the Event Loop.
+		This design makes it lightweight and scalable.
+	
+	3 --> Sinlge programming langauage
+		node.js allow developers to use js can run both server side and client side
+
+	4 --> Cross-Platform
+		Node.js works on Windows, macOS, and Linux. You can build the same application across different systems.
+	
+	5 --> Strong Community Support
+		Node.js has a huge open-source community.
+		This ensures continuous updates, tools, and packages.
+
+	6 --> Built-In Modules
+		Node.js comes with many core modules like fs, http, path, crypto, events—helping developers work without external libraries.
+	
+15) What is WebSocket?
+
+	WebSocket is a communication protocol that enables real-time two-way communication between client and server over a persistent connection.
+
+16) What is CSR (Client-Side Rendering)?
+
+	CSR means the browser (client) downloads a minimal HTML file and then renders the UI using JavaScript. The rendering happens on the client side after downloading the JS bundle.
+	
+	How CSR works : In Client-Side Rendering (CSR), the browser first loads a blank or minimal HTML file, then downloads JavaScript, which builds the entire UI in the browser and
+			fetches data from APIs to display the final content.
+
+17) What is SSR (Server-Side Rendering)?
+
+	SSR means the server generates the complete HTML page for each request and sends it to the browser. Rendering happens on the server.
+
+	how SSR works : In Server-Side Rendering (SSR), the server generates the full HTML for the UI and sends it to the browser, which displays the already-rendered page quickly,
+			and then JavaScript hydrates it to make the page interactive.
+
+17) waht is SSG(Static Site Generation)? 
+
+	SSG (Static Site Generation) is a technique where HTML pages are generated at build time, not on every request. The server returns pre-built static files, making pages
+	load very fast
+
+17.5) What is Cache? 
+
+	Caching is a client-side mechanism used as a temporary storage system to store frequently accessed data, so future requests can be served faster without recalculating or
+	fetching the same data repeatedly. It reduces server load and increases browsing speed.
+
+18) what is Cookies?
+
+	A cookie is a small piece of data stored in the user browser, It is automatically sent with every request to the same domain, helping the server identify the user.
+	Cookies are commonly used to store tokens, preferences, or session IDs.
+	Cookies are Stored on the client-side, Has size limits (~4KB), and can have properties like expiry, HttpOnly, Secure, and SameSite.
+
+19) what is session?
+
+	A session is sever side mechanism stores user data on the server, The browser only keeps a session ID, usually inside a cookie.
+	On every request, the browser sends this session ID, and the server uses it to retrieve the user’s data. Since the data is stored server-side, sessions are more secure than
+	storing data directly in the browser.
+
+20) what is local storage? 
+
+	Local Storage is a browser storage mechanism that allows you to store data permanently, Local Storage stores data permanently until manually cleared, even after closing
+	or reopening the browser. its Storage capacity: ~5MB
+
+21) what is session storage? 
+
+	Session Storage stores data only for the current tab and is removed automatically when the tab or browser is closed. Key Features: its Storage capacity: ~5MB
+
+22) What is Middleware?
+
+	Middleware in Express.js is a function that runs between the request and response cycle.
+	It can modify the request object, modify the response object, stop the request, or pass it to the next middleware.
+	---> next() is a function in Express that tells the application to move on to the next middleware or route handler in the request-response cycle.
+
+23) Types of Middleware? 
+
+	Application-level middleware : example = app.use(logger)
+	Route-level middleware : example = app.get('/user', authMiddleware, getUser)
+	Built-in middleware : example = express.json()is used to parse the incomming req with JSON payload, express.urlencoded()
+	Third-party middleware :example = cors, morgan, helmet
+	Error-handling middleware : example = app.use((err, req, res, next) => {res.status(500).send("Something went wrong")});
+
+24) What is req and res in Express.js
+
+	REQ represents the incoming request from the client. It contains all the details about what the client is asking for.
+	Common properties of req : 
+		req.params → URL parameters: /users/:id
+		req.query → Query string: /users?search=arif
+		req.body → Data sent in POST/PUT requests
+		req.headers → Request headers
+		req.method → GET, POST, etc.
+		req.url → The requested URL
+
+	RES is the response object used to send data back to the client. It defines what the server sends as output
+	Common methods of res
+		res.send() → Sends plain text or JSON
+		res.json() → Sends JSON data
+		res.status() → Sets HTTP status code
+		res.redirect() → Redirect to another URL
+		res.download() → Download a file
+		res.end() → End the response
+
+25) what is Http?
+
+	HTTP stands for HyperText Transfer Protocol. It is the communication protocol used for transferring data between a client (browser) and a server on the web.
+
+26) what are http methods? 
+
+	HTTP methods are used perform some action on server. They are used in APIs and web applications to perform CRUD operations.	
+	
+	--> GET : is used to request a data from server. it retrive data from specific resources without modifying it. its commently use for fetch data from server. 
+	--> POST : its used to send data to server to create new resource  or updating an exisitng one. commently use for form submission, uploading file
+	--> PUT : its used to update or replace a resources on the server with provided data. if rescource cannot exist its create new resource.
+	--> PATCH : used to apply modification to resource. its often used when you want to update only  sepecific part of resource .rater than replace the entire resources.
+	--> DELETE : its used to remove or delete the resources on the server. 
+	--> HEAD : Same as GET but without body Returns only headers, no response body. Used for checking resource availability or metadata.
+	--> OPTIONS : The HTTP OPTIONS method is used to ask the server which HTTP methods and features are supported for a specific resource.commonly used in CORS preflight requests.
+	--> CONNECT :
+
+27) what is Https? 
+	
+	HTTPS stands for HyperText Transfer Protocol Secure. It is the secure version of HTTP, where all communication between the client and the server is encrypted using SSL/TLS.
+	This ensures that data cannot be intercepted or tampered with during transfer.
+
+28) What is SSL?
+
+	SSL (Secure Sockets Layer) is a security protocol used to encrypt communication between a client and a server.
+	It ensures: Data privacy, Data integrity, Server authentication
+
+28) What is TLS?
+
+	TLS (Transport Layer Security) is the improved and more secure version of SSL. It fixes SSL vulnerabilities and is now the standard encryption protocol used in HTTPS.
+	All modern websites and applications use TLS, not SSL.
+
+29) what http status code? 
+	
+	HTTP status codes are three-digit numbers returned by the server to indicate the result of a client’s request. They tell whether the request was successful,
+	failed, redirected, or encountered an error.
+
+
+30) what is What is Morgan?
+	
+	Morgan is a popular HTTP request logger middleware for Express.js. It logs details about each incoming request to the server.
+
+=============================================================================================================================================
+31)  what is routing?
+
+	Routing is the mechanism that determines how an application responds to a client request based on the URL path and HTTP method (GET, POST, PUT, DELETE, etc.).
+
+32) what is Route Parameters (req.params)?
+
+	Route parameters are dynamic values in the URL path used to identify specific resources, and they are accessed using req.params.(example : GET /users/10)
+
+	app.get("/users/:id", (req, res) => {
+  		console.log(req.params.id);  // 10
+	});
+
+33) waht is Query Parameters (req.query)?
+
+	Query parameters are key-value pairs added to a URL after the ? symbol. They are used to send optional data such as filtering, searching, sorting, and pagination. 
+	In Express.js, query parameters can be accessed using req.query.
+
+	(example: GET /users?role=admin&limit=10)
+	
+	app.get("/users", (req, res) => {
+  		console.log(req.query.role);  // admin
+  		console.log(req.query.limit); // 10
+	});
+
+34) Static File & Static Folder?
+
+	A static file is a file served directly to the browser without being modified by the server.
+	A static folder is a directory that contains static files and is made accessible to the client using middleware.
+
+35) 
+
+
+36) what is Router() in Express.js? 
+
+	Router is used to organize routes into separate modular files. Instead of defining all routes in one file, we create route modules like user routes or blog routes using express.Router(),
+	which improves scalability, readability, and maintainability in production-level applications.
+
+37) what is JWT?
+
+	JWT (JSON Web Token) is a compact, secure token format used for authentication and authorization in web applications. It allows the server to verify a user’s identity
+	without storing session data.
+
+	JWTs are commonly used for: Login authentication, API authorization, Protecting routes
+
+	How its Work:  When a user logs in, they send their user credentials to the server. The server validates these credentials, and if they are correct, it creates a JWT, token
+		       that contains user information, a secure signature, and an expiry time. The server then sends this token back to the client.The client stores the token
+		       (either in localStorage or an HTTP-only cookie). Whenever the client accesses a protected API, it includes this token in the request, usually in the Authorization header.
+		       The server verifies the token to ensure it hasn’t been tampered with and hasn’t expired. This verification happens without querying the database. If the token is valid,
+                       the server grants access to the requested resource.
+	
+	JWT Structure (Three Parts) : header.payload.signature. header Contains token type + hashing algorithm, payload contain user data and signature Used to verify token authenticity
+
+38) What is Stateful?
+
+	A stateful API remembers previous client interactions by storing state information on the server.
+	Example: Session-based login.
+
+39) What is Stateless?
+
+	stateless means the server does not store any information about preveious client requests. each request treated independent. all necessasery data must be sent with every request.
+	Example: REST API with JWT
+
+=============================================================================================================================================
+
+40) waht is MVC Architecture? 
+	its software design pattern that separates an application into three layers:
+	--> Model      —  model is responsible for Handles database logics. It defines the schema, manages data, performs database operations, and handles validations
+	--> View       — The View represents the UI or response shown to the user
+	--> Controller — The Controller handles incoming requests, processes business logic, communicates with the Model, and sends responses back to the client. 
+			  It acts as a bridge between the View and the Model.
+
+41) What is monolithic architecture? 
+
+	A monolithic architecture means your entire application is built as one single unit. All features (auth, blog, products, admin, APIs, UI) run inside one codebase and one deployment.
+	If one part fails or has heavy load, the whole app gets affected, Any update → redeploy the entire app.
+
+42) what is Access Token vs Refresh Token?
+
+	Access Token: An Access Token is a short-lived token used to access protected APIs. Has short expiry (15 min–1 hour), Used for authentication + authorization,
+		      If token is stolen damage is limited because it expires quickly.
+
+	Refresh Token: A Refresh Token is a long-lived token used to generate a new access token when it expires. Long expiry (days, weeks, months), Stored securely (httpOnly cookie, database)
+		       Not sent with every API request, Used only to get a new access token, actual purpose is To keep the user logged in without asking for password again.
+
+43) What is Authentication?
+
+	Authentication is the process of verifying the user's identity. It checks if the user is really the person they claim to be, usually by verifying their email and password or OTP.
+
+44) What is Authorization?
+
+	Authorization happens after authentication. It determines whether a user has permission to access a resource or a specific route based on their role
+
+45) what is a View Engine?
+
+	A view engine is a template engine that allows you to render dynamic HTML pages from the server side. It lets your Express.js application generate HTML using templates instead
+	of sending plain static files.
+
+46) waht is libuv? 
+
+	libuv is a C library used by Node.js to handle asynchronous operations like file system access, networking, timers, and the event loop. libuv helps Node.js perform non-blocking operations
+	in the background. The event loop (which is part of libuv).
+	Non-blocking operations in Node.js are handled by libuv, while the event loop schedules and executes their callbacks.
+
+47)
+48)  =============================================================================================================================================
+
+49) what is app.use()| app.all()?
+
+	app.use() is used to load middleware or routers in an Express application
+	app.all() is used to handle all http methods(get,post,put,patch,delete) for specific route or path
+
+50) What is app.set()?
+
+	app.set() is used to configure settings in an Express application.likes Setting view engine, Setting views directory, Storing config variables.
+
+51) What is CORS? 
+
+	CORS stands for Cross-Origin Resource Sharing. It is a security feature implimented by browsers that restrict the web page from make requests to a different domain (origin).
+	By default, browsers block cross-origin requests for security, CORS allows servers to specify which external origins (websites) are allowed to access their resources.
+
+52) what is API?
+
+	API (Application Programming Interface) is a set of rules that allows two software system communicate with each other
+
+53) What is a REST API? 
+
+	--> A REST API is a web API that follows REST principles such as stateless communication, resource-based URLs, and use of HTTP methods to enable	
+            communication between client and server.
+
+	--> A RESTful API is an REEST API that strickly follows REST principles. be stateless communication, resource-based URLs,
+	    and uses standard HTTP methods, Return proper status codes
+
+55) what is GraphQL?
+
+	GraphQL is a query language for APIs that allows clients to request exactly the data they need through a single endpoint, reducing over-fetching and under-fetching and making
+	data fetching more efficient than traditional REST APIs.
+
+55) what sifference between RestAPi vs GraphQl
+
+	REST API follows endpoint based archtecture and GraphQL follow a query based archetecture.
+	In REST, the backend decides what data is returned from each endpoint.
+	In GraphQL, the frontend decides exactly what data it needs.
+
+	--> REST exposes multiple endpoints and returns fixed data structures. Can lead to Over-fetching Clients may receive more or less data than needed and 
+		Under-fetching (not getting enough data, requiring additional requests).
+	--> GraphQL exposes a single endpoint and Allows clients to request only the required fields, reducing over-fetching and under-fetching, Provides more flexibility to frontend applications.
+
+	REST uses multiple endpoints with fixed responses determined by the server, whereas GraphQL uses a single endpoint and allows clients to request exactly the data they need,
+	reducing over-fetching and under-fetching.
+
+54) What is a Buffer in Node.js?
+	
+	A buffer is a temporary memory area used to store raw binary data while it’s being transferred or processed. In Node.js, buffers are used when working with files, streams, or network data
+
+55) What is a Stream in Node.js?
+
+	A Stream is a way to handle continuous data piece-by-piece instead of loading the entire data at once. Streams improve performance and memory usage
+	Streams are useful for: Reading large files, Writing large files, Streaming audio/video, Network communication (HTTP requests/responses)
+
+	Type of Stream: 
+		Readable Stream: Used to read data from db or api.
+		Writable Stream Used to write data to a destination. Exmaple= http response (res object)
+		Duplex Stream: Can read and write data at the same time. Example = websocket
+		Transform Stream: A special kind of duplex stream that modifies or transforms data while reading and writing. Example= converting text to upperCase
+	
+=============================================================================================================================================
+
+
+56) what is res.writeHead()?
+
+	res.writeHead(statusCode, headers), This method is used in Node’s native HTTP module to set the status code and response headers.
+	res.writeHead(200, { "Content-Type": "text/html" });
+
+57) what is res.write()?
+
+	res.write() sends a chunk of response body to the client. You can call it multiple times.It does not close the response.
+
+58) what is res.end()?
+
+	res.end() finishes the response. No more data can be sent after this.
+
+59) what is res.send() (Express) ?
+
+	This is an Express.js method, not native Node.js. Sends response body, Sets correct headers automatically, Ends the response internally
+
+60) What is Router Chaining in Express.js? 
+
+	Router chaining allows multiple HTTP methods (GET, POST, PUT, DELETE) for the same route using router.route(), making the routing more organized
+ 	and readable
+
+61) what is dynamic routing? 
+
+	Dynamic routing is a technique where routes are defined with dynamic values or parameters in the URL, allowing the server to handle different resources using a single route.
+
+62) what is SOP (Same Origin Policy)?
+
+	Same Origin Policy (SOP) is a browser security rule that prevents website from accessing data of another website unless they have the same:
+	Protocol (http / https), Domain (example.com), Port (3000, 5000, etc.)
+	Its uses to protect the users from malicious websites stealing data.
+
+63) What is a Preflight Request? 
+
+	A preflight request is an automatic OPTIONS request sent by the browser before the actual cross-origin request. It checks whether the server allows the request method, headers,
+	and origin under the CORS policy
+
+64) what is CORS Headers?
+
+	CORS headers are HTTP response headers that the server sends to let the browser know which cross-origin requests are allowed.
+
+	Important CORS Headers:
+		Access-Control-Allow-Origin: Specifies which origins are allowed to access the server. eg= http://localhost:3000, *
+		Access-Control-Allow-Methods: Specifies which HTTP methods are allowed from that origin. eg= (GET, POST, PUT, DELETE)
+		Access-Control-Allow-Headers: Specifies which request headers the client is allowed to send. eg= (Content-Type, Authorization)
+		Access-Control-Allow-Credentials: Allows browser to send cookies, JWT tokens, sessions.
+
+65) what is .env?
+
+	env is a file used to store environment variables like secrets, API keys, and configuration settings safely outside your source code
+
+66) what is process?
+
+	A process is a program that is currently running and has its own memory, resources, and execution environment.
+
+67) what is Child process?
+
+	A child process is a separate process created by parent process to execute tasks independently. In Node.js, child processes are used to run heavy or parallel
+	tasks without blocking the main event loop.
+
+68) what is Parent process?
+
+	A parent process is the main process that creates child processes to run independently and can communicate with them or control their execution.
+
+69) what is spawn?
+
+	spawn creates a new child process to run a command or executable, and it streams the output in real time.its used to run long-running or large-output tasks
+
+70) what is fork? 
+
+	fork creates a new Node.js child process that runs a separate JavaScript file and enables two-way communication using messages
+
+71) what is process.nextTick()? 
+
+	process.nextTick() is a Node.js method that schedules a callback to be executed immediately after the current operation finishes, before the event loop continues to the next phase.
+
+	--> Runs before timers, I/O callbacks, setImmediate().
+	--> Runs before the Promise microtask queue? — in Node, process.nextTick callbacks are processed before other microtasks (they have very high priority),
+	
+	console.log('start');
+	process.nextTick(() => console.log('nextTick callback'));
+	Promise.resolve().then(() => console.log('promise then'));
+	setImmediate(() => console.log('setImmediate'));
+	console.log('end');
+
+
+72) app.get() | app.post?
+
+	app.get(): used to handle http get request to retrive data.
+	app.post(): used to handle http post req to send data to server 
+
+73) res.json()?
+
+	send the json response to client. it converet the provided js object, array into json string.set content type to application/json used to send json data. in restAPi
+
+74) what is multer?
+
+	multer is a middleware for handling multiform data in node.js appliaction. its make easy to upload file in applicaiton
+
+75) what is rate limiting? 
+
+	use express.rate limter midddle ware whicj help to controll the number of req a client can make within specified time. its protectc server from  ddos atack or spamming
+
+76) what is helmet() ?
+
+	helmet() is a middleware in Express that adds various security headers to help protect your application from common web vulnerabilities. like Content-Security-Policy (CSP)	
+
+77) what is express.session()?
+
+	express-session is a middleware in Express used to store and manage user sessions on the server, allowing data like login status to persist across multiple requests.
+
+78) what is idompotency? 
+
+	Idempotency means that making the same request multiple times produces the same result as making it once.
+	Example:
+		GET /users/1     → safe to call many times
+		DELETE /users/5  → deleting again doesn’t change anything
+		PUT /user/1      → updating with the same data gives same final state
+
+79) what is csrf? 
+
+	CSRF (Cross-Site Request Forgery) type web securty vulnarablity, logged-in user’s unknowgly perform some malicous action on website 
+
+	Example: CSRF or Cross-Site Request Forgery is a security attack where a malicious website tricks an authenticated user into sending unintended requests to another website.
+		 It mainly affects cookie-based authentication because browsers automatically send cookies with requests. CSRF can be prevented using CSRF tokens, SameSite cookies, and proper
+		request validation.
+	
+	prevent by : use sameSite cookies, use cors to restrict orgin, proper request validation.
+
+80) sql injection? 
+
+	SQL Injection is a security attack where an attacker inserts malicious SQL code into input fields to access, modify, or delete data in the database.
+
+	prevent : 
+		Use ORM --> Tools like Sequelize, Prisma, Mongoose (for MongoDB) automatically handle escaping.
+		Validate and Sanitize User Input
+		never concate user input directky into sql query,	
+		use parametrized query or use orm 
+
+81) How does localhost work without the internet?
+
+	localhost refers to the local machine itself (IP address 127.0.0.1). When we access localhost, the browser sends the request to a server running on a port of the same computer,
+	so the request never leaves the device and does not require an internet connection.
+
+82) what is difference between a Load Balancer and an API Gateway?
+
+	Load Balancer: A Load Balancer is responsible for distributing incoming traffic across multiple servers to improve performance, availability, and fault tolerance. It ensures that no single server
+	is overloaded, but it does not handle business logic or API-level concerns.
+
+	API Gateway: An API Gateway acts as a single entry point for client requests in an application, especially in microservices architecture. It routes requests to the appropriate backend services
+	and also handles authentication, authorization, rate limiting, logging, and caching.
+
+
+83) What is a Webhook?
+
+	A webhook is a mechanism that allows one system to automatically send real-time data to another system via an HTTP request when a specific event occurs.
+	Instead of repeatedly requesting data, the system automatically sends an HTTP request (usually POST) to a predefined URL with event details.
+	
+	The frontend initiates the payment, the backend creates an order, the payment gateway processes it, and the final payment status is confirmed through webhooks
+
+	The payment process starts when a user clicks Pay on the frontend, which sends a request to the backend. The backend creates a payment order and sends it to the payment gateway.
+	The user completes the payment, and the gateway processes it. Finally, the gateway sends a webhook to the backend to confirm the payment, and the backend updates the payment status.
+	The actual use of a webhook in the payment process:  A webhook ensures the backend always knows the real payment result, even if the frontend never receives a response.
+
+
+84) what API integrations and third-party services.?
+	
+	Examples: Payment gateway integration, Google login, Email sending, Cloud storage, Maps, AI APIs, SMS OTP
+
+	API integration: it means the application sends requests to another service. Frontend → Backend → External API → Response → Frontend
+	Example:  users sends login request and the backend calls Google OAuth API and Google returns user data and Backend creates JWT token
+
+	Common Third-Party Services: 
+		for Authentication : Firebase, Auth0, Google OAuth
+		for Payment: Stripe, Razorpay
+		for Email Services: Nodemailer, SendGrid
+		for Image/File Upload: Cloudinary, AWS S3
+		for AI APIs : OpenAI API, Google Gemini API
+
+============================================================================================================================================
+
+1) How would you optimize API performance?
+	
+	--> reduce unnecessary database queries by using indexing, pagination, filtering, and selecting only required fields.
+	--> I use caching mechanisms like Redis for frequently accessed data to reduce database load.
+	--> use asynchronous operations
+	--> use Pagination Instead of sending thousands of records at once, I use pagination.
+	--> use compression, rate limiting, proper status codes, and sometimes CDN for static assets.
+	--> I monitor API response times and database performance using logging and profiling tools
+
+2) What happens when multiple requests hit Node.js simultaneously?
+
+	Node.js uses a single-threaded event loop architecture. When multiple requests arrive, Node.js handles multple requests asynchronously using the event loop.
+
+2.5) How to handle multiple requests in Node.js?
+	
+	Node.js handles multiple requests using its asynchronous non-blocking event loop architecture
+
+
+3) How do you handle real-time notifications?
+	
+	handle real-time notifications using WebSockets with Socket.IO. The client establishes a persistent connection with the server, and whenever an event occurs
+	like a new message, order update, or comment — the server emits an event instantly to connected users.
+
+
+4) How do you handle errors globally?
+
+	use centralized error handling middleware in applications. Instead of handling errors in every controller, create a global error middleware that catches all errors and sends
+	standardized responses.
+
+5) How do you implement RBAC?
+
+	implement RBAC by assigning roles like user, admin to users and restricting routes based on permissions. After authentication using JWT,
+	store the user role in the token or fetch it from the database. Then create authorization middleware to check the logged-in user has permission to access a specific route.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
